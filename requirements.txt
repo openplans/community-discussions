@@ -8,3 +8,4 @@ sorl-thumbnail>=11.12
 pytils>=0.2.3
 
 psycopg2
+django-registration
