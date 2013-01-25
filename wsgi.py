@@ -17,7 +17,7 @@ import os
 import sys
 
 CURR_DIR = os.path.dirname(__file__)
-sys.path.append(os.path.join(CURR_DIR, 'example_bootstrap'))
+sys.path.append(os.path.join(CURR_DIR, 'src'))
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 

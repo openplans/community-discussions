@@ -1,4 +1,4 @@
-# Django settings for example_bootstrap project.
+# Django settings for project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -50,7 +50,7 @@ MIDDLEWARE_CLASSES = (
     'pybb.middleware.PybbMiddleware',
 )
 
-ROOT_URLCONF = 'example_bootstrap.urls'
+ROOT_URLCONF = 'src.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates')
@@ -118,6 +118,6 @@ PYBB_ATTACHMENT_ENABLE = False
 # Override settings values by importing the local_settings.py module.
 
 try:
-    from .local_settings import *
+    from local_settings import *
 except ImportError:
     pass
