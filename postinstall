@@ -1,0 +1,45 @@
+#!/bin/sh
+
+shout() { echo "$0: $*" >&2; }  # Just echo an error and the program name
+barf() { shout "$*"; exit 111; }
+safe() { "$@" || barf "cannot $*"; }
+
+# =============================================================================
+# Post-install hook file for configuring dotcloud server
+
+echo "Writing the local settings file..."
+cat >> example_bootstrap/local_settings.py <<EOF
+
+import json
+with open('/home/dotcloud/environment.json') as f:
+    env = json.load(f)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'shareabouts',
+        'USER': env['DOTCLOUD_DB_SQL_LOGIN'],
+        'PASSWORD': env['DOTCLOUD_DB_SQL_PASSWORD'],
+        'HOST': env['DOTCLOUD_DB_SQL_HOST'],
+        'PORT': int(env['DOTCLOUD_DB_SQL_PORT']),
+    }
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "redis_cache.cache.RedisCache",
+        "LOCATION": "%s:%s:1" % (env['DOTCLOUD_CACHE_REDIS_HOST'],
+                                 env['DOTCLOUD_CACHE_REDIS_PORT']),
+        "OPTIONS": {
+            "CLIENT_CLASS": "redis_cache.client.DefaultClient",
+            "PASSWORD": env['DOTCLOUD_CACHE_REDIS_PASSWORD'],
+        }
+    }
+}
+
+STATIC_ROOT = '/home/dotcloud/current/static/'
+
+# Debug is False by default, true if set in the environment.
+DEBUG = (env.get('DEBUG', 'False') in ['true', 'True'])
+TEMPLATE_DEBUG = DEBUG
+EOF
