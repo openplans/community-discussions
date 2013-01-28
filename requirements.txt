@@ -19,4 +19,4 @@ git+https://github.com/pinax/django-user-accounts.git
 git+https://github.com/pinax/pinax-theme-bootstrap-account.git
 
 
-git+https://github.com/openplans/community-discussions.git
+git+https://github.com/openplans/pybbm.git
