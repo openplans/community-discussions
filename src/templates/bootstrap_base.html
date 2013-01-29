@@ -7,8 +7,13 @@
     <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
     <link rel="stylesheet" href="{{ STATIC_URL }}example_bootstrap.css" type='text/css'>
 
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Viewport Fix for Responsive Layout -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css" type="text/css" />
@@ -44,34 +49,20 @@
               <span class="icon-bar"></span>
             </a>
 
-            <a class="brand" href="/">Community Discussions</a>
+            <a class="brand" href="/"><strong>Community Discussions</strong></a>
 
             <div class="nav-collapse collapse">
-                <ul class="nav">
-                  {% if request.user.is_authenticated %}
-                      <li>
-                          <a href="{% url pybb:edit_profile %}">Profile [logged as {{ request.user.username }}]</a>
-                      </li>
-                      <li>
-                          <a href="{% url auth_logout %}">Logout</a>
-                      </li>
-                      {% if request.user.is_superuser %}
-                          <li>
-                              <a href="{% url admin:index %}">Admin interface</a>
-                          </li>
-                      {% endif %}
-
-                  {% else %}
-                      <li>
-                          <a href="{% url auth_login %}">Login</a>
-                      </li>
-                      <li>
-                          <a href="{% url registration_register %}">Register</a>
-                      </li>
-                  {% endif %}
-                  <li><a href="http://github.com/hovel/pybbm">Code</a></li>
-                  <li><a href="http://pypi.python.org/pypi/pybbm">Download</a></li>
-                  <li><a href="http://readthedocs.org/docs/pybbm/en/latest/">Documentation</a></li>
+                <ul class="nav pull-right">
+                    {% if request.user.is_authenticated %}
+                    <li><a href="{% url pybb:edit_profile %}">Profile [logged as {{ request.user.username }}]</a></li>
+                    <li><a href="{% url auth_logout %}">Logout</a></li>
+                    {% if request.user.is_superuser %}
+                    <li><a href="{% url admin:index %}">Admin interface</a></li>
+                    {% endif %}
+                    {% else %}
+                    <li><a href="{% url auth_login %}">Login</a></li>
+                    <li><a href="{% url registration_register %}">Register</a></li>
+                    {% endif %}
                 </ul>
             </div>
 
@@ -81,71 +72,38 @@
 
 <div class="container">
 
-    <!-- Main hero unit for a primary marketing message or call to action -->
-    <div class="hero-unit">
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {% if request.path != '/' %}
-            <div id="breadcrumb">
-                {% block breadcrumb %}
-                    <a href="/">Main</a>
-                {% endblock breadcrumb %}
-            </div>
-        {% endif %}
-        {% if request.path == '/' %}
-            <div class='forum-headline alert alert-block'>
-                This is a default installation of PyBBModified with default theme from example.
-            </div>
-        {% endif %}
-        <div id="content">
-            {% block content %}
-            {% endblock content %}
-        </div>
-    </div>
-    {% if request.path == '/' %}
-    <div class="row">
-        <div class="span5">
-            <h2>Fully Documented</h2>
-            <p>Everything explained</p>
-            <p><a class="btn" href="http://readthedocs.org/docs/pybbm/en/latest/">Read docs now &raquo;</a></p>
-        </div>
-        <div class="span5">
-            <h2>Heavily tested</h2>
-            <p> 95% code coverage!</p>
-            <p><a class="btn" href="https://github.com/hovel/pybbm/blob/master/pybb/tests.py">View tests &raquo;</a></p>
-        </div>
-        <div class="span5">
-            <h2>Want a fast start?</h2>
-            <p>Start from ready to use example project</p>
-            <p><a class="btn" href="http://readthedocs.org/docs/pybbm/en/latest/example.html">Read more &raquo;</a></p>
-        </div>
-    </div>
-
-    <div class="row spaced">
-        <div class="span5">
-            <h2>Django application</h2>
-            <p>Easy to embed to any django project</p>
-            <p><a class="btn success" href="http://readthedocs.org/docs/pybbm/en/latest/install.html">Learn how to install &raquo;</a></p>
-        </div>
-        <div class="span5">
-            <h2>Help welcomed</h2>
-            <p>Extended PyBBM? Push your changes.</p>
-            <p><a class="btn" href="https://github.com/hovel/pybbm">Fork repo &raquo;</a></p>
-        </div>
-    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
-
-    <footer>
-        powered by:
-        <a href="http://www.djangoproject.com">django</a>,&nbsp;
-        <a href="http://www.pybbm.org">pybbm</a>
-    </footer>
+    {% if request.path != '/' %}
+        <div id="breadcrumb" class="hidden-phone">
+            {% block breadcrumb %}
+                <a href="/">Main</a>
+            {% endblock breadcrumb %}
+        </div>
+    {% endif %}
+    <div id="content">
+        {% block content %}
+        {% endblock content %}
+    </div>
 
 </div> <!-- /container -->
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li><a href="http://www.pybbm.org">Powered by PyBBModified</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>

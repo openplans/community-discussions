@@ -196,7 +196,7 @@ textarea {
 }
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Verdana, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
@@ -1215,7 +1215,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Verdana, sans-serif;
 }
 label {
   display: block;
@@ -4426,7 +4426,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-search .search-query {
   margin-bottom: 0;
   padding: 4px 14px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Verdana, sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
@@ -7598,4 +7598,19 @@ a.badge:hover {
 }
 .affix {
   position: fixed;
+}
+/* --------------------------------------------------
+ * Override Bootstrap's Defaults
+ -------------------------------------------------- */
+.site-footer {
+  margin-top: 80px;
+}
+.site-footer .nav > li > a {
+  color: #999999;
+}
+.navbar {
+  margin-bottom: 20px;
+}
+.breadcrumb {
+  font-size: 85%;
 }

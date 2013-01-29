@@ -54,3 +54,23 @@
 
 // Utility classes
 @import "bootstrap/less/utilities.less"; // Has to be last to override when necessary
+
+
+/* --------------------------------------------------
+ * Override Bootstrap's Defaults
+ -------------------------------------------------- */
+
+@sansFontFamily:        'Open Sans', Verdana, sans-serif;
+
+.site-footer {
+  margin-top: @baseLineHeight * 4;
+}
+.site-footer .nav > li > a {
+  color: @grayLight;
+}
+.navbar {
+  margin-bottom: @baseLineHeight;
+}
+.breadcrumb {
+ font-size: 85%
+}
