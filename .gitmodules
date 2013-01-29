@@ -1,3 +1,6 @@
 [submodule "lib/pybbm"]
 	path = lib/pybbm
 	url = git@github.com:openplans/pybbm.git
+[submodule "src/static/bootstrap"]
+	path = src/static/bootstrap
+	url = https://github.com/twitter/bootstrap.git
