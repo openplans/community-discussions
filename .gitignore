@@ -1,4 +1,9 @@
 *~
 *.pyc
 *.sqlite
-env/
+
+# Virtual Env
+*env/
+
+# Local Settings
+src/local_settings.py
