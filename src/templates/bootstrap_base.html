@@ -9,13 +9,16 @@
     <![endif]-->
     <link rel="stylesheet" href="{{ STATIC_URL }}example_bootstrap.css" type='text/css'>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/i18n/jquery-ui-i18n.min.js"></script>
     <script src="http://yandex.st/json2/2011-01-18/json2.min.js"></script>
     <script src="{{ STATIC_URL }}csrf.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}pybb/js/pybbjs.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap-collapse.js"></script>
     <style type="text/css">
         body {
             padding-top: -60px;
@@ -30,36 +33,48 @@
 </head>
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-static-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="/">PYBB Modified. Django forum solution.</a>
-            <ul class="nav">
-                {% if request.user.is_authenticated %}
-                    <li>
-                        <a href="{% url pybb:edit_profile %}">Profile [logged as {{ request.user.username }}]</a>
-                    </li>
-                    <li>
-                        <a href="{% url auth_logout %}">Logout</a>
-                    </li>
-                    {% if request.user.is_superuser %}
-                        <li>
-                            <a href="{% url admin:index %}">Admin interface</a>
-                        </li>
-                    {% endif %}
 
-                {% else %}
-                    <li>
-                        <a href="{% url auth_login %}">Login</a>
-                    </li>
-                    <li>
-                        <a href="{% url registration_register %}">Register</a>
-                    </li>
-                {% endif %}
-                <li><a href="http://github.com/hovel/pybbm">Code</a></li>
-                <li><a href="http://pypi.python.org/pypi/pybbm">Download</a></li>
-                <li><a href="http://readthedocs.org/docs/pybbm/en/latest/">Documentation</a></li>
-            </ul>
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="/">Community Discussions</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                  {% if request.user.is_authenticated %}
+                      <li>
+                          <a href="{% url pybb:edit_profile %}">Profile [logged as {{ request.user.username }}]</a>
+                      </li>
+                      <li>
+                          <a href="{% url auth_logout %}">Logout</a>
+                      </li>
+                      {% if request.user.is_superuser %}
+                          <li>
+                              <a href="{% url admin:index %}">Admin interface</a>
+                          </li>
+                      {% endif %}
+
+                  {% else %}
+                      <li>
+                          <a href="{% url auth_login %}">Login</a>
+                      </li>
+                      <li>
+                          <a href="{% url registration_register %}">Register</a>
+                      </li>
+                  {% endif %}
+                  <li><a href="http://github.com/hovel/pybbm">Code</a></li>
+                  <li><a href="http://pypi.python.org/pypi/pybbm">Download</a></li>
+                  <li><a href="http://readthedocs.org/docs/pybbm/en/latest/">Documentation</a></li>
+                </ul>
+            </div>
+
         </div>
     </div>
 </div>
