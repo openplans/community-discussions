@@ -1,0 +1,10 @@
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'community_discussions',
+        'USER': 'my_username',
+        'PASSWORD': 'my_password',
+        'HOST': 'localhost',
+        'PORT': 5432
+    }
+}
