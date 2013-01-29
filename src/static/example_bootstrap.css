@@ -7603,6 +7603,7 @@ a.badge:hover {
  * Override Bootstrap's Defaults
  -------------------------------------------------- */
 .site-footer {
+  font-size: 85%;
   margin-top: 80px;
 }
 .site-footer .nav > li > a {
