@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+<![endif]-->
+<link rel="stylesheet" href="{{ STATIC_URL }}css/post-form-map.css" />
+
+<div id="place-map-container">
+  <div id="place-map"></div>
+  <span id="centerpoint">
+    <span class="shadow"></span><span class="x"></span><span class="marker"></span>
+  </span>
+</div>
+
+<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+<script src="{{ STATIC_URL }}js/post-form-map.js"></script>
+<script>
+  CommunityDiscussions.initFormMap({
+    el: 'place-map',
+    tileUrl: 'http://{s}.tiles.mapbox.com/v3/atogle.map-vo4oycva/{z}/{x}/{y}.png',
+    tileAttribution: 'Map data &copy; OpenStreetMap contributors, CC-BY-SA <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>',
+    center: [40.7199, -73.9996]
+  });
+</script>
+
