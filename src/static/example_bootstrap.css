@@ -7609,8 +7609,11 @@ a.badge:hover {
 .site-footer .nav > li > a {
   color: #999999;
 }
-.navbar {
+.navbar-static-top {
   margin-bottom: 20px;
+}
+.navbar-static-top .navbar-inner {
+  box-shadow: none;
 }
 .breadcrumb {
   font-size: 85%;

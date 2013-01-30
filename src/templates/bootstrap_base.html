@@ -54,9 +54,10 @@
             <div class="nav-collapse collapse">
                 <ul class="nav pull-right">
                     {% if request.user.is_authenticated %}
-                    <li><a href="{% url pybb:edit_profile %}">Profile [logged as {{ request.user.username }}]</a></li>
-                    <li><a href="{% url auth_logout %}">Logout</a></li>
+                    <li><a href="{% url pybb:edit_profile %}"><strong>{{ request.user.username }}</strong> <small>(profile)</small></a></li>
+                    <li><a href="{% url auth_logout %}"><small>Log Out</small></a></li>
                     {% if request.user.is_superuser %}
+                    <li class="divider-vertical"></li>
                     <li><a href="{% url admin:index %}">Admin interface</a></li>
                     {% endif %}
                     {% else %}
