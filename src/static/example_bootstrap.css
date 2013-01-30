@@ -7602,6 +7602,9 @@ a.badge:hover {
 /* --------------------------------------------------
  * Override Bootstrap's Defaults
  -------------------------------------------------- */
+h1 {
+  font-size: 31.5px;
+}
 .site-footer {
   font-size: 85%;
   margin-top: 80px;
@@ -7617,6 +7620,11 @@ a.badge:hover {
 }
 .breadcrumb {
   font-size: 85%;
+  font-weight: bold;
+  color: #555555;
+}
+.breadcrumb a {
+  font-weight: normal;
 }
 #logo {
   position: relative;
@@ -7652,4 +7660,105 @@ a.badge:hover {
   -webkit-box-shadow: 1px 0 0 #a1aa8f;
   -moz-box-shadow: 1px 0 0 #a1aa8f;
   box-shadow: 1px 0 0 #a1aa8f;
+}
+#emoticons {
+  display: none;
+}
+/* --------------------------------------------------
+ * from PYBBM theme's visual.less
+ -------------------------------------------------- */
+.forum-headline {
+  margin-top: 10px;
+}
+.attachments-form {
+  padding-bottom: 15px;
+}
+.attachment-link {
+  border-bottom: 1px dotted;
+}
+/* --- Unread --- */
+.state-indicator {
+  display: block;
+  float: left;
+  background-color: #eeeeee;
+  height: 0.8em;
+  width: 1.25em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  margin: 3px 5px;
+  position: relative;
+}
+.state-indicator:after {
+  position: absolute;
+  content: "\0020";
+  width: 0em;
+  height: 0em;
+  border-bottom: 0.4em solid transparent;
+  border-right: 0.5em solid #eeeeee;
+  top: 100%;
+  left: 0.5em;
+}
+.topic-unread a,
+.forum-unread a {
+  font-weight: bold;
+}
+.topic-unread .state-indicator,
+.forum-unread .state-indicator {
+  background-color: #6b8e23;
+}
+.topic-unread .state-indicator:after,
+.forum-unread .state-indicator:after {
+  border-right-color: #6b8e23;
+}
+/* --- Moderation --- */
+.on-moderation {
+  background: #ffcccc;
+}
+/* --- Mini pagination --- */
+.mini-pagination {
+  padding: 3px 0 3px 10px;
+  font-size: 12px;
+}
+/* --------------------------------------------------
+ * from PYBBM theme's posts.less
+ -------------------------------------------------- */
+.post {
+  margin: 3px 0 5px 0;
+}
+.post-header {
+  padding: 3px 0 3px 20px;
+  font-size: 12px;
+  background-color: #f5f5f5;
+}
+.post tbody tr:hover td {
+  background-color: inherit;
+}
+.post-info {
+  width: 200px;
+  padding: 10px;
+}
+.post-info .post-author {
+  font-size: 15px;
+  padding: 5px 0;
+}
+.post-info .post-extra-info {
+  font-size: 12px;
+  color: #999999;
+}
+.post-info .post-controls {
+  font-size: 12px;
+}
+.post-content {
+  vertical-align: top;
+  padding: 10px;
+}
+.post-signature {
+  color: #CCC;
+  margin-top: 15px;
+  border-top: 1px dotted #CCC;
+  display: block;
+}
+.post-related {
+  margin-top: 20px;
 }
