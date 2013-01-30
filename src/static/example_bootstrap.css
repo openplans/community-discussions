@@ -7676,6 +7676,15 @@ h1 {
 .attachment-link {
   border-bottom: 1px dotted;
 }
+.topic-post-count,
+.topic-view-count,
+.topic-last-post,
+.forum-topic-count,
+.forum-post-count,
+.forum-last-post {
+  font-size: 85%;
+  color: #999999;
+}
 /* --- Unread --- */
 .state-indicator {
   display: block;
