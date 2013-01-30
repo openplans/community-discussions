@@ -14,11 +14,16 @@
 <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 <script src="{{ STATIC_URL }}js/post-form-map.js"></script>
 <script>
+  var center;
+  {% if place_geom %}
+    center = [{{ place_geom.y }}, {{ place_geom.x }}];
+  {% endif %}
+
   CommunityDiscussions.initFormMap({
     el: 'place-map',
     tileUrl: 'http://{s}.tiles.mapbox.com/v3/atogle.map-vo4oycva/{z}/{x}/{y}.png',
     tileAttribution: 'Map data &copy; OpenStreetMap contributors, CC-BY-SA <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>',
-    center: [40.7199, -73.9996]
+    center: center || [40.7199, -73.9996]
   });
 </script>
 
