@@ -23,7 +23,7 @@
 
     {% if form.place %}
       {% include "pybb/form_field.html" with field=form.place %}
-      {% include "pybb/_post_form_map.html" %}
+      {% include "pybb/_post_form_map.html" with place_geom=form.place.value %}
     {% endif %}
 
     {% if form.poll_type %}
