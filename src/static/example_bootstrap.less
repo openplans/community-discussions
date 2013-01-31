@@ -145,6 +145,7 @@ h1 { font-size: @baseFontSize * 2.25; }
   padding: @baseLineHeight; 
   font-family: @sansFontFamily; 
   font-size: 1em;
+  resize: none;
 }
 
 label {
@@ -203,6 +204,17 @@ label {
   .btn-small;
   .btn-block;
   text-transform: uppercase;
+}
+
+/* Form Errors */
+.errorlist {
+  .alert;
+  .alert-error;
+  margin-left: 0;
+  list-style: none;
+}
+.error {
+  .control-group.warning;
 }
 
 
