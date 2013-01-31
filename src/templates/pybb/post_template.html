@@ -1,0 +1,88 @@
+{% load i18n pybb_tags thumbnail %}
+
+<article class="post {% if post.on_moderation %}on-moderation{% endif %}" id="post-{{ post.id }}" name="post-{{ post.id }}">
+<div class="container">
+
+  <header class="post-header span2 pull-left">
+    <div class="post-info">
+      <a class="permalink" href="{{ post.get_absolute_url }}"><span class="text-info">{% pybb_time post.created %}</span></a>
+      {% include "pybb/avatar.html" %}
+      <div class="post-author"><a href="{{ post.user.get_profile.get_absolute_url }}">{{ post.user.username }}</a></div>
+
+      {% if post.user.get_profile.rank %}
+      {% with post.user.get_profile as profile %}
+      <div class='rank'>
+        {% trans "Rank" %}: {{ profile.rank }}
+        {% if user.is_authenticated and user != post.user %}
+        <a href='#' class='vote' rel='{{ profile.get_vote_up_url }}'>+</a>
+        <a href='#' class='vote' rel='{{ profile.get_vote_down_url }}'>-</a>
+        {% endif %}
+      </div>
+      {% endwith %}
+      {% endif %}
+
+      {% if user.is_superuser %}
+      <div class="post-extra-info">{{ post.user_ip }}</div>
+      {% endif %}
+
+      <div class="post-controls">
+        <div class="btn-toolbar">
+         <div class="btn-group btn-group-vertical">
+            {% if user.is_moderator or post|pybb_posted_by:user %}
+            <a class="btn btn-mini" href="{% url pybb:edit_post pk=post.id %}">{% trans "Edit" %}</a>
+            {% endif %}
+            {% if user.is_moderator %}
+            <a class="btn btn-mini" onclick="pybb_delete_post('{% url pybb:delete_post post.id %}',
+            'post-{{ post.id }}', '{% trans 'Delete post?' %}'); return false;"
+            href="{% url pybb:delete_post post.id %}">{% trans "Delete" %}</a>
+            {% if post.on_moderation %}
+            <a class="btn btn-mini" href="{% url pybb:moderate_post pk=post.id %}">{% trans "Approve post" %}</a>
+            {% endif %}
+            {% endif %}
+            {% if perms.pybb.change_post and user.is_staff %}
+            <a class="btn btn-mini" href="{% url admin:pybb_post_change post.id %}">{% trans 'Admin' %}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .post-info -->
+  </header>
+
+<div class="post-content span5">
+  {{ post.body_html|safe }}
+
+  {% if not user.is_authenticated or user.get_profile.show_signatures %}
+  {% if post.user.get_profile.signature %}
+  <div class="post-signature">
+    {{ post.user.get_profile.signature_html|safe }}
+  </div>
+  {% endif %}
+  {% endif %}
+
+  {% if post.updated %}
+  <div class="updated-message">{% trans "Edited" %} {% pybb_time post.updated %}</div>
+  {% endif %}
+
+  {% comment %}
+  {% if post.attachment_cache %}
+  {% for attach in post.attachment_cache %}
+  <br/>
+  {% trans "Attachment" %}: <a href="{{ attach.get_absolute_url }}">{{ attach.name }}</a> ({{ attach.size_display }})
+  {% endfor %}
+  {% endif %}
+  {% endcomment %}
+
+  <div class="post-related">
+    <a href="{% url pybb:add_post topic.id %}?quote_id={{ post.id }}">{% trans "quote" %}</a>
+    <div class='attachments'>
+      {% for attachment in post.attachments.all %}
+      <a href="{{ attachment.file.url }}"><img src="{{ STATIC_URL }}pybb/img/attachment.png"> {{ attachment.size_display }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+</div><!-- end .post-content -->
+
+</div>
+</article>

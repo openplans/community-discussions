@@ -26,7 +26,7 @@
             {% include 'pybb/poll.html' %}
         {% endif %}
 
-        <div class="posts">
+        <ul class="posts unstyled">
             {% if first_post %}{% ifnotequal first_post post_list.0 %}
                 {% with first_post as post %}
                     <li class="first_post">{% include "pybb/post_template.html" %}</li>
@@ -36,7 +36,7 @@
                 {% cycle 'odd' 'even' as rowcolors silent %}
                 {% include "pybb/post_template.html" %}
             {% endfor %}
-        </div>
+        </ul>
         <div>&nbsp;</div>
         {% with _('Posts') as label %}
             {% include "pybb/pagination.html" %}
