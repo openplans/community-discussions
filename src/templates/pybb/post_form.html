@@ -12,8 +12,7 @@
   {% csrf_token %}
   <fieldset>
 
-      <div class="container-fluid">
-        <div class="row-fluid">
+      <div class="row-fluid">
 
           <div class="span7">
               {% include "pybb/form_errors.html" %}
@@ -25,24 +24,24 @@
                 <a href='#' title='{{ smile|safe }}'><img src='{{ STATIC_URL }}{{ form.smiles_prefix }}{{ url }}'></a>
                 {% endfor %}
               </div>
+
+          {% if form.place %}
           </div>
 
           <div class="span5">
-              {% if form.place %}
-                  {% include "pybb/form_field.html" with field=form.place %}
-                  {% include "pybb/_post_form_map.html" with place_geom=form.place.value %}
-              {% endif %}
+              {% include "pybb/form_field.html" with field=form.place %}
+              {% include "pybb/_post_form_map.html" with place_geom=form.place.value %}
+          {% endif %}
 
               {% if form.poll_type %}
                   {% include "pybb/poll_edit_form.html" %}
               {% endif %}
               {% include "pybb/attachments_formset.html" %}
+
+              <p class="submit">{% include "pybb/_button_submit.html" %}</p>
           </div>
 
-        </div>
       </div>
-
-      <p class="submit">{% include "pybb/_button_submit.html" %}</p>
 
   </fieldset>
 </form>
