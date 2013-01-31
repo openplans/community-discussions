@@ -154,11 +154,24 @@ label {
   text-transform: uppercase;
   margin-top: @baseLineHeight;
 }
+label.checkbox {
+  display: inline-block;
+  color: @gray;
+  font-weight: normal;
+  text-transform: none;
+  margin-top: 0;
+  text-align: left;
+}
 .submit {
   margin-top: @baseLineHeight * 2;
 }
 
 /* Polls */
+.btn-checkbox {
+  padding-right: 1.5em;
+  padding-left: 2em;
+  margin-top: @baseLineHeight * 4;
+}
 #id_poll_question {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

@@ -4,21 +4,23 @@
   #poll-form-content { display: none; }
 </style>
 
-<label class="checkbox">
+<div class="well">
+  
+<label class="checkbox btn btn-checkbox btn-large btn-block">
   <input id="poll-toggle" type="checkbox"{% if form.poll_type.value %} checked="checked"{% endif %}>
-  {% trans 'Add a poll' %}
+  {% trans 'Add a Poll' %}
 </label>
 <div id="poll-form-content">
   <input type="hidden" name="poll_type" id="id_poll_type" value="{% if form.poll_type.value %}{{ form.poll_type.value }}{% endif %}">
   <div id="poll-question">
     {% include "pybb/form_field.html" with field=form.poll_question %}
   </div>
-  <label class="checkbox">
-    <input id="poll-question-type" type="checkbox"{% if form.poll_type.value == 2 %} checked="checked"{% endif %}>
-    {% trans 'Participants can choose more than one answer' %}
-  </label>
   <div id="poll-answers-formset">
       <label>{% trans 'Poll answers' %}</label>
+      <label class="checkbox">
+        <input id="poll-question-type" type="checkbox"{% if form.poll_type.value == 2 %} checked="checked"{% endif %}>
+        {% trans 'Participants can choose more than one answer' %}
+      </label>
       {% include "pybb/form_errors.html" with form=pollformset %}
       {% for form_answer in pollformset %}
           <div class="poll-answer-form">
@@ -27,6 +29,8 @@
       {% endfor %}
     {{ pollformset.management_form }}
   </div>
+</div>
+
 </div>
 
 <script type="text/javascript">

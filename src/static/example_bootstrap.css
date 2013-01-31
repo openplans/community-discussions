@@ -7688,10 +7688,23 @@ label {
   text-transform: uppercase;
   margin-top: 20px;
 }
+label.checkbox {
+  display: inline-block;
+  color: #555555;
+  font-weight: normal;
+  text-transform: none;
+  margin-top: 0;
+  text-align: left;
+}
 .submit {
   margin-top: 40px;
 }
 /* Polls */
+.btn-checkbox {
+  padding-right: 1.5em;
+  padding-left: 2em;
+  margin-top: 80px;
+}
 #id_poll_question {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
