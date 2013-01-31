@@ -7674,14 +7674,8 @@ h1 {
 #id_name,
 #id_login {
   -webkit-box-sizing: border-box;
-  /* Safari/Chrome, other WebKit */
-
   -moz-box-sizing: border-box;
-  /* Firefox, other Gecko */
-
   box-sizing: border-box;
-  /* Opera/IE 8+ */
-
   width: 100%;
   padding: 20px;
   font-family: 'Open Sans', Verdana, sans-serif;
