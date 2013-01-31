@@ -7673,6 +7673,9 @@ h1 {
 /*  position: absolute;
   bottom: 0;*/
 }
+.markItUpButton.preview {
+  display: none !important;
+}
 #markItUpId_body .markItUpContainer {
   font-size: inherit;
 }
