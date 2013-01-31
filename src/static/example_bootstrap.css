@@ -7666,6 +7666,12 @@ h1 {
 }
 #markItUpId_body {
   width: auto;
+/*  position: relative;
+  padding-bottom: 30px;*/
+}
+.markItUpHeader {
+/*  position: absolute;
+  bottom: 0;*/
 }
 #markItUpId_body .markItUpContainer {
   font-size: inherit;
