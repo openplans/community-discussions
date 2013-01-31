@@ -129,6 +129,24 @@ h1 { font-size: @baseFontSize * 2.25; }
   display: none;
 }
 
+#markItUpId_body {
+  width: auto;
+  .markItUpContainer {
+    font-size: inherit;
+  }
+}
+#markItUpId_body .markItUpEditor, 
+#id_name, 
+#id_login { 
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box; /* Firefox, other Gecko */
+          box-sizing: border-box; /* Opera/IE 8+ */
+  width: 100%; 
+  padding: @baseLineHeight; 
+  font-family: @sansFontFamily; 
+  font-size: 1em;
+}
+
 
 /* --------------------------------------------------
  * from PYBBM theme's visual.less
