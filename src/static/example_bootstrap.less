@@ -131,10 +131,20 @@ h1 { font-size: @baseFontSize * 2.25; }
 
 #markItUpId_body {
   width: auto;
-  .markItUpContainer {
-    font-size: inherit;
-  }
+/*  position: relative;*/
+/*  padding-bottom: 30px;*/
 }
+.markItUpHeader {
+/*  position: absolute;*/
+/*  bottom: 0;*/
+}
+.markItUpButton.preview {
+  display: none !important;
+}
+#markItUpId_body .markItUpContainer {
+  font-size: inherit;
+}
+
 #markItUpId_body .markItUpEditor, 
 #id_name, 
 #id_login { 
