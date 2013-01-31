@@ -7687,6 +7687,15 @@ h1 {
   font-family: 'Open Sans', Verdana, sans-serif;
   font-size: 1em;
 }
+label {
+  color: #999999;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+.submit {
+  margin-top: 20px;
+}
 /* --------------------------------------------------
  * from PYBBM theme's visual.less
  -------------------------------------------------- */
