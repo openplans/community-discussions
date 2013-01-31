@@ -6,7 +6,7 @@
 
 <label class="checkbox">
   <input id="poll-toggle" type="checkbox"{% if form.poll_type.value %} checked="checked"{% endif %}>
-  {% trans 'Add a poll?' %}
+  {% trans 'Add a poll' %}
 </label>
 <div id="poll-form-content">
   <input type="hidden" name="poll_type" id="id_poll_type" value="{% if form.poll_type.value %}{{ form.poll_type.value }}{% endif %}">
@@ -15,7 +15,7 @@
   </div>
   <label class="checkbox">
     <input id="poll-question-type" type="checkbox"{% if form.poll_type.value == 2 %} checked="checked"{% endif %}>
-    {% trans 'Users can choose more than one answer' %}
+    {% trans 'Participants can choose more than one answer' %}
   </label>
   <div id="poll-answers-formset">
       <label>{% trans 'Poll answers' %}</label>
