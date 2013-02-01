@@ -1,0 +1,22 @@
+{% load i18n pybb_tags %}
+<form class="watch-area-form" action="
+    {% if object.pk %}
+        {% url pybb:edit_watch_area pk=object.pk %}
+    {% else %}
+        {% url pybb:add_watch_area %}
+    {% endif %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <fieldset>
+    {{ form.errors }}
+    {% include "pybb/form_errors.html" %}
+    {% if form.name %} {% include "pybb/form_field.html" with field=form.name %} {% endif %}
+    {% if form.login %} {% include "pybb/form_field.html" with field=form.login %}  {% endif %}
+
+    {% if form.fence %}
+      {% include "pybb/form_field.html" with field=form.fence %}
+      {% include "pybb/_watch_area_form_map.html" with place_geom=form.fence.value %}
+    {% endif %}
+
+    <p class="submit">{% include "pybb/_button_submit.html" %}</p>
+  </fieldset>
+</form>
