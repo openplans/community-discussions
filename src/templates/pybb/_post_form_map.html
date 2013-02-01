@@ -14,9 +14,13 @@
 <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 <script src="{{ STATIC_URL }}js/post-form-map.js"></script>
 <script>
-  var center;
+
+  var numberRe = /(-?\d+\.\d*)/g,
+      matches, wkt, center;
   {% if place_geom %}
-    center = [{{ place_geom.y }}, {{ place_geom.x }}];
+    wkt = '{{ place_geom }}';
+    matches = wkt.match(numberRe);
+    center = [matches[1], matches[0]];
   {% endif %}
 
   CommunityDiscussions.initFormMap({

@@ -5,9 +5,11 @@
 </style>
 
 <div class="well">
-  
+
 <label class="checkbox btn btn-checkbox btn-large btn-block">
-  <input id="poll-toggle" type="checkbox"{% if form.poll_type.value %} checked="checked"{% endif %}>
+  <input id="poll-toggle" type="checkbox"
+  {% if form.poll_type.value != "0" and form.poll_type.value != 0 and form.poll_type.value != None %}
+   checked="checked"{% endif %}>
   {% trans 'Add a Poll' %}
 </label>
 <div id="poll-form-content">
@@ -18,7 +20,7 @@
   <div id="poll-answers-formset">
       <label>{% trans 'Poll answers' %}</label>
       <label class="checkbox">
-        <input id="poll-question-type" type="checkbox"{% if form.poll_type.value == 2 %} checked="checked"{% endif %}>
+        <input id="poll-question-type" type="checkbox"{% if form.poll_type.value == "2" or form.poll_type.value == 2 %} checked="checked"{% endif %}>
         {% trans 'Participants can choose more than one answer' %}
       </label>
       {% include "pybb/form_errors.html" with form=pollformset %}
