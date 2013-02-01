@@ -2,11 +2,7 @@
 <!--[if lte IE 8]>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
 <![endif]-->
-<link rel="stylesheet" href="{{ STATIC_URL }}leaflet.draw/leaflet.draw.css" />
-<!--[if lte IE 8]>
-    <link rel="stylesheet" href="{{ STATIC_URL }}leaflet.draw/leaflet.draw.ie.css" />
-<![endif]-->
-<link rel="stylesheet" href="{{ STATIC_URL }}css/post-form-map.css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/watch-area-form-map.css" />
 
 <div id="place-map-container">
   <div id="place-map"></div>
@@ -16,15 +12,11 @@
 </div>
 
 <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
-<script src="{{ STATIC_URL }}leaflet.draw/leaflet.draw.js"></script>
-<script src="{{ STATIC_URL }}js/post-form-map.js"></script>
+<script src="{{ STATIC_URL }}js/watch-area-form-map.js"></script>
 <script>
   var center;
-  {% if place_geom %}
-    center = [{{ place_geom.y }}, {{ place_geom.x }}];
-  {% endif %}
 
-  CommunityDiscussions.initFormMap({
+  CommunityDiscussions.initWatchAreaMap({
     el: 'place-map',
     tileUrl: 'http://{s}.tiles.mapbox.com/v3/atogle.map-vo4oycva/{z}/{x}/{y}.png',
     tileAttribution: 'Map data &copy; OpenStreetMap contributors, CC-BY-SA <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>',
