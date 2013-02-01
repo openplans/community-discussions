@@ -1,0 +1,83 @@
+{% load i18n %}
+
+<style>
+  #poll-form-content { display: none; }
+</style>
+
+<div class="well">
+
+<label class="checkbox btn btn-checkbox btn-large btn-block">
+  <input id="poll-toggle" type="checkbox"
+  {% if form.poll_type.value != "0" and form.poll_type.value != 0 and form.poll_type.value != None %}
+   checked="checked"{% endif %}>
+  {% trans 'Add a Poll' %}
+</label>
+<div id="poll-form-content">
+  <input type="hidden" name="poll_type" id="id_poll_type" value="{% if form.poll_type.value %}{{ form.poll_type.value }}{% endif %}">
+  <div id="poll-question">
+    {% include "pybb/form_field.html" with field=form.poll_question %}
+  </div>
+  <div id="poll-answers-formset">
+      <label>{% trans 'Poll answers' %}</label>
+      <label class="checkbox">
+        <input id="poll-question-type" type="checkbox"{% if form.poll_type.value == "2" or form.poll_type.value == 2 %} checked="checked"{% endif %}>
+        {% trans 'Participants can choose more than one answer' %}
+      </label>
+      {% include "pybb/form_errors.html" with form=pollformset %}
+      {% for form_answer in pollformset %}
+          <div class="poll-answer-form">
+              {% include "pybb/form.html" with form=form_answer hide_labels=1 %}
+          </div>
+      {% endfor %}
+    {{ pollformset.management_form }}
+  </div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+  $(window).load(function () {
+    var $pollToggle = $('#poll-toggle'),
+        $pollTypeToggle = $('#poll-question-type'),
+        $pollContent = $('#poll-form-content'),
+        $pollType = $('#id_poll_type'),
+        $formset = $('div#poll-answers-formset div.poll-answer-form');
+
+    $formset.formset({
+      deleteText:'{% trans 'remove answer' %}',
+      addText:'{% trans 'add answer' %}',
+      prefix: 'poll_answers'
+    });
+
+    function setPollType() {
+      if($pollTypeToggle.is(':checked')) {
+        // POLL_TYPE_MULTIPLE = 2 in models.py
+        $pollType.val(2);
+      } else {
+        // POLL_TYPE_SINGLE = 1 in models.py
+        $pollType.val(1);
+      }
+    }
+
+    function setPollContentVisibility() {
+      // Add a poll?
+      if($pollToggle.is(':checked')) {
+        $pollContent.show();
+        setPollType();
+      } else {
+        $pollContent.hide();
+        // POLL_TYPE_NONE = 0 in models.py
+        $pollType.val(0);
+      }
+    }
+
+    // Set content visibility when the toggle changes
+    $pollToggle.change(setPollContentVisibility);
+
+    // Set the poll type on checkbox change
+    $pollTypeToggle.change(setPollType);
+
+    // Set content visibility on load
+    setPollContentVisibility();
+  });
+</script>

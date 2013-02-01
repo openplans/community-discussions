@@ -11,25 +11,37 @@
     {% endif %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <fieldset>
-    {% include "pybb/form_errors.html" %}
-    {% if form.name %} {% include "pybb/form_field.html" with field=form.name %} {% endif %}
-    {% if form.login %} {% include "pybb/form_field.html" with field=form.login %}  {% endif %}
-    {% if form.body %} {% include "pybb/form_field.html" with field=form.body %}  {% endif %}
-    <div id='emoticons'>
-      {% for smile, url in form.available_smiles.items %}
-        <a href='#' title='{{ smile|safe }}'><img src='{{ STATIC_URL }}{{ form.smiles_prefix }}{{ url }}'></a>
-      {% endfor %}
-    </div>
 
-    {% if form.place %}
-      {% include "pybb/form_field.html" with field=form.place %}
-      {% include "pybb/_post_form_map.html" with place_geom=form.place.value %}
-    {% endif %}
+      <div class="row-fluid">
 
-    {% if form.poll_type %}
-      {% include "pybb/poll_edit_form.html" %}
-    {% endif %}
-    {% include "pybb/attachments_formset.html" %}
-    <p class="submit">{% include "pybb/_button_submit.html" %}</p>
+          <div class="span7">
+              {% include "pybb/form_errors.html" %}
+              {% if form.name %} {% include "pybb/form_field.html" with field=form.name %} {% endif %}
+              {% if form.login %} {% include "pybb/form_field.html" with field=form.login %}  {% endif %}
+              {% if form.body %} {% include "pybb/form_field.html" with field=form.body %}  {% endif %}
+              <div id='emoticons'>
+                {% for smile, url in form.available_smiles.items %}
+                <a href='#' title='{{ smile|safe }}'><img src='{{ STATIC_URL }}{{ form.smiles_prefix }}{{ url }}'></a>
+                {% endfor %}
+              </div>
+
+          {% if form.place %}
+          </div>
+
+          <div class="span5">
+              {% include "pybb/form_field.html" with field=form.place %}
+              {% include "pybb/_post_form_map.html" with place_geom=form.place.value %}
+          {% endif %}
+
+              {% if form.poll_type %}
+                  {% include "pybb/poll_edit_form.html" %}
+              {% endif %}
+              {% include "pybb/attachments_formset.html" %}
+
+              <p class="submit">{% include "pybb/_button_submit.html" %}</p>
+          </div>
+
+      </div>
+
   </fieldset>
 </form>
