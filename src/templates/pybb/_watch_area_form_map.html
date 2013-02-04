@@ -1,26 +1,30 @@
+{% load i18n pybb_tags %}
+
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
 <!--[if lte IE 8]>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
 <![endif]-->
 <link rel="stylesheet" href="{{ STATIC_URL }}css/watch-area-form-map.css" />
 
-<div id="place-map-container">
-  <div id="place-map"></div>
-  <span id="centerpoint">
-    <span class="shadow"></span><span class="x"></span><span class="marker"></span>
-  </span>
+<div id="watch-area-map-container">
+  <div id="watch-area-map"></div>
+  <button id="init-watch-area-btn" class="btn btn-large">{% trans "Start a New Watch Area" %}</button>
 </div>
 
+
 <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+<script src="{{ STATIC_URL }}js/utils.js"></script>
 <script src="{{ STATIC_URL }}js/watch-area-form-map.js"></script>
 <script>
   var center;
 
   CommunityDiscussions.initWatchAreaMap({
-    el: 'place-map',
+    el: 'watch-area-map',
     tileUrl: 'http://{s}.tiles.mapbox.com/v3/atogle.map-vo4oycva/{z}/{x}/{y}.png',
     tileAttribution: 'Map data &copy; OpenStreetMap contributors, CC-BY-SA <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>',
-    center: center || [40.7199, -73.9996]
+    center: center || [40.7199, -73.9996],
+    resetConfirmationMsg: '{% trans "This will reset your watch area. Are you sure?" %}',
+    resetButtonMsg: '{% trans "Reset Your Watch Area" %}'
   });
 </script>
 
