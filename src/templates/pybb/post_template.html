@@ -3,7 +3,29 @@
 <article class="post {% if post.on_moderation %}on-moderation{% endif %}" id="post-{{ post.id }}" name="post-{{ post.id }}">
 <div class="container">
 
-  <header class="post-header span2 pull-left">
+  <header class="post-header span7">
+
+    <div class="post-controls">
+      <div class="btn-toolbar">
+       <div class="btn-group">
+          {% if user.is_moderator or post|pybb_posted_by:user %}
+          <a class="btn btn-mini" href="{% url pybb:edit_post pk=post.id %}">{% trans "Edit" %}</a>
+          {% endif %}
+          {% if user.is_moderator %}
+          <a class="btn btn-mini" onclick="pybb_delete_post('{% url pybb:delete_post post.id %}',
+          'post-{{ post.id }}', '{% trans 'Delete post?' %}'); return false;"
+          href="{% url pybb:delete_post post.id %}">{% trans "Delete" %}</a>
+          {% if post.on_moderation %}
+          <a class="btn btn-mini" href="{% url pybb:moderate_post pk=post.id %}">{% trans "Approve post" %}</a>
+          {% endif %}
+          {% endif %}
+          {% if perms.pybb.change_post and user.is_staff %}
+          <a class="btn btn-mini" href="{% url admin:pybb_post_change post.id %}">{% trans 'Admin' %}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
     <div class="post-info">
       <a class="permalink" href="{{ post.get_absolute_url }}"><span class="text-info">{% pybb_time post.created %}</span></a>
       {% include "pybb/avatar.html" %}
@@ -25,31 +47,10 @@
       <div class="post-extra-info">{{ post.user_ip }}</div>
       {% endif %}
 
-      <div class="post-controls">
-        <div class="btn-toolbar">
-         <div class="btn-group btn-group-vertical">
-            {% if user.is_moderator or post|pybb_posted_by:user %}
-            <a class="btn btn-mini" href="{% url pybb:edit_post pk=post.id %}">{% trans "Edit" %}</a>
-            {% endif %}
-            {% if user.is_moderator %}
-            <a class="btn btn-mini" onclick="pybb_delete_post('{% url pybb:delete_post post.id %}',
-            'post-{{ post.id }}', '{% trans 'Delete post?' %}'); return false;"
-            href="{% url pybb:delete_post post.id %}">{% trans "Delete" %}</a>
-            {% if post.on_moderation %}
-            <a class="btn btn-mini" href="{% url pybb:moderate_post pk=post.id %}">{% trans "Approve post" %}</a>
-            {% endif %}
-            {% endif %}
-            {% if perms.pybb.change_post and user.is_staff %}
-            <a class="btn btn-mini" href="{% url admin:pybb_post_change post.id %}">{% trans 'Admin' %}</a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-
     </div><!-- end .post-info -->
   </header>
 
-<div class="post-content span5">
+<div class="post-content span7">
   {{ post.body_html|safe }}
 
   {% if not user.is_authenticated or user.get_profile.show_signatures %}
