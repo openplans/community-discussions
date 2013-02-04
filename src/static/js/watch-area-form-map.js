@@ -34,7 +34,9 @@ var CommunityDiscussions = CommunityDiscussions || {};
       setAreaFormElement(area);
 
       // Turn on editing
-      area.editing.enable();
+      if (options.editable) {
+        area.editing.enable();
+      }
 
       // On edit, update the hidden input element
       area.on('edit', function() {

@@ -1,0 +1,51 @@
+{% extends 'pybb/base.html' %}
+{% load i18n thumbnail pybb_tags %}
+
+{% block title %}{% trans "Profile editing" %}{% endblock title %}
+
+{% block content %}
+    <h1>{% trans "Profile editing" %}</h1>
+    <div class="avatar">
+    {% thumbnail form.instance.avatar "80x80" as avatar %}
+        <img src="{{ avatar.url }}" alt="avatar">
+    {% empty %}
+        <img src="{{ PYBB_DEFAULT_AVATAR_URL }}" alt="avatar">
+    {% endthumbnail %}
+    </div>
+    <p><a href="{% url auth_password_change %}">{% trans "Change the password" %}</a></p>
+    <form method="post" enctype="multipart/form-data" class="profile-edit">
+        {% csrf_token %}
+        <fieldset>
+            <legend>{% trans "Profile editing" %}</legend>
+            {% include "pybb/form.html" %}
+            <p>{% include "pybb/_button_save.html" %}</p>
+        </fieldset>
+    </form>
+
+    <h1>{% trans "Subscriptions on topics" %}</h1>
+    <ul>
+        {% for sub in user.subscriptions.all %}
+            <li>
+                {% pybb_link sub %}
+                &mdash;
+                <strong>
+                    <a href="{% url pybb:delete_subscription sub.id %}">{% trans "delete" %}</a>
+                </strong>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h1>{% trans "Subscriptions on watch areas" %}</h1>
+    <ul>
+        {% for sub in user.watch_areas.all %}
+            <li>
+                {% pybb_link sub %}
+                &mdash;
+                <strong>
+                    <a href="{% url pybb:delete_watch_area sub.id %}">{% trans "delete" %}</a>
+                </strong>
+            </li>
+        {% endfor %}
+        <a href="{% url pybb:add_watch_area %}">{% trans "add a watch area" %}</a>
+    </ul>
+{% endblock content %}
