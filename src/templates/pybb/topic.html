@@ -22,9 +22,17 @@
             {% include "pybb/pagination.html" %}
         {% endwith %}
 
+        <div class="span4 pull-right">
+
+          <div id="place-map-container">
+            <div id="place-map"></div>
+          </div>
+
         {% if topic.poll_type != 0 %}
             {% include 'pybb/poll.html' %}
         {% endif %}
+
+        </div>
 
         <ul class="posts unstyled">
             {% if first_post %}{% ifnotequal first_post post_list.0 %}
