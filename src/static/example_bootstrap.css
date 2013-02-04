@@ -7713,6 +7713,33 @@ label.checkbox {
   margin-top: 40px;
 }
 /* Polls */
+.poll-header {
+  margin-bottom: 20px;
+}
+.poll-label {
+  color: #999999;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+.poll-question {
+  font-size: 21px;
+}
+.poll-answer-choice ul {
+  margin-left: 0;
+  list-style: none;
+}
+.poll-answer-choice ul li {
+  margin-bottom: 10px;
+}
+.poll-answer-choice ul label {
+  color: #555555;
+  font-weight: normal;
+  text-transform: none;
+  margin-top: 0;
+}
 .btn-checkbox {
   padding-right: 1.5em;
   padding-left: 2em;

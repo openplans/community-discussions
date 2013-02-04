@@ -1,0 +1,41 @@
+{% load i18n pybb_tags %}
+
+<div class="poll well span4 pull-right">
+
+  <div class="poll-header">
+    <h2 class="poll-label">{% trans 'Poll' %}</h2>
+    <strong class="poll-question">{{ topic.poll_question }}</strong>
+  </div>
+
+  <div class="poll-answers">
+  {% if request.user.is_authenticated %}
+    {% if topic|pybb_topic_poll_not_voted:request.user %}
+      <div class="poll-answer-choice">
+        <form class="poll-form" action="{% url pybb:topic_poll_vote topic.pk %}" method="post">
+          {% csrf_token %}
+          {% include "pybb/form.html" with form=poll_form %}
+          <p class="submit">{% include "pybb/_button_submit.html" %}</p>
+        </form>
+      </div>
+    {% else %}
+      <ul class="unstyled">
+      {% for answer in topic.poll_answers.all %}
+        <li class="poll-answer">
+          <p><span class="badge">{{ answer.votes }}</span> {{ answer }}</p>
+          <div class="progress"><div class="bar" style="width: {{ answer.votes_percent }}%;"></div></div>
+        </li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% else %}
+    <ul class="">
+    {% for answer in topic.poll_answers.all %}
+      <li class="poll-answer">
+        <p>{{ answer }}</p>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </div>
+
+</div>
