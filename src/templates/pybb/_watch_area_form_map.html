@@ -13,6 +13,8 @@
 
 
 <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+<script src="{{ STATIC_URL }}lib/wicket.js"></script>
+<script src="{{ STATIC_URL }}lib/wicket-leaflet.src.js"></script>
 <script src="{{ STATIC_URL }}js/utils.js"></script>
 <script src="{{ STATIC_URL }}js/watch-area-form-map.js"></script>
 <script>
@@ -24,7 +26,8 @@
     tileAttribution: 'Map data &copy; OpenStreetMap contributors, CC-BY-SA <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>',
     center: center || [40.7199, -73.9996],
     resetConfirmationMsg: '{% trans "This will reset your watch area. Are you sure?" %}',
-    resetButtonMsg: '{% trans "Reset Your Watch Area" %}'
+    resetButtonMsg: '{% trans "Reset Your Watch Area" %}',
+    fenceGeoJson: '{{ fence|default:"" }}'
   });
 </script>
 

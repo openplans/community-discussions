@@ -13,7 +13,7 @@
 
     {% if form.fence %}
       {% include "pybb/form_field.html" with field=form.fence %}
-      {% include "pybb/_watch_area_form_map.html" with place_geom=form.fence.value %}
+      {% include "pybb/_watch_area_form_map.html" with fence=form.fence.value %}
     {% endif %}
 
     {% include "pybb/_button_submit.html" %}
