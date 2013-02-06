@@ -46,12 +46,27 @@
 
     <h3>{% trans "Watch Areas" %}</h3>
     <ul class="watch-areas">
+
+        {% comment %}
+          TODO:
+          -----
+          The following loop should iterate over the union of the user's
+          own watch areas as well as the watch areas that belong to other
+          users that this user watches. For now a user only subscribes to
+          watch areas that she owns.
+        {% endcomment %}
+
         {% for sub in user.watch_areas.all %}
             <li>
               <p>
                 {% pybb_link sub %}
                 &mdash;
-                <strong><a href="{% url pybb:delete_watch_area sub.id %}">{% trans "delete" %}</a></strong>
+
+                {% if user in sub.watchers.all %}
+                  <strong><a href="{% url pybb:delete_watch_area_subscription sub.id %}">{% trans "unsubscribe" %}</a></strong>
+                {% else %}
+                  <strong><a href="{% url pybb:add_watch_area_subscription sub.id %}">{% trans "subscribe" %}</a></strong>
+                {% endif %}
               </p>
             </li>
         {% endfor %}
