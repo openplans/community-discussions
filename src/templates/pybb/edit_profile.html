@@ -4,7 +4,10 @@
 {% block title %}{% trans "Profile editing" %}{% endblock title %}
 
 {% block content %}
-    <h1>{% trans "Profile editing" %}</h1>
+
+<div class="span7">
+
+    <h1>{{ request.user.username }}</h1>
     <div class="avatar">
     {% thumbnail form.instance.avatar "80x80" as avatar %}
         <img src="{{ avatar.url }}" alt="avatar">
@@ -22,30 +25,39 @@
         </fieldset>
     </form>
 
-    <h1>{% trans "Subscriptions on topics" %}</h1>
-    <ul>
+</div>
+
+<div class="span4 pull-right">
+
+    <h3>{% trans "Topic Subscriptions" %}</h3>
+    <ul class="subscriptions">
         {% for sub in user.subscriptions.all %}
             <li>
+              <p>
                 {% pybb_link sub %}
                 &mdash;
-                <strong>
-                    <a href="{% url pybb:delete_subscription sub.id %}">{% trans "delete" %}</a>
-                </strong>
+                <strong><a href="{% url pybb:delete_subscription sub.id %}">{% trans "unsubscribe" %}</a></strong>
+              </p>
             </li>
         {% endfor %}
     </ul>
 
-    <h1>{% trans "Subscriptions on watch areas" %}</h1>
-    <ul>
+<br />
+
+    <h3>{% trans "Watch Areas" %}</h3>
+    <ul class="watch-areas">
         {% for sub in user.watch_areas.all %}
             <li>
+              <p>
                 {% pybb_link sub %}
                 &mdash;
-                <strong>
-                    <a href="{% url pybb:delete_watch_area sub.id %}">{% trans "delete" %}</a>
-                </strong>
+                <strong><a href="{% url pybb:delete_watch_area sub.id %}">{% trans "delete" %}</a></strong>
+              </p>
             </li>
         {% endfor %}
-        <a href="{% url pybb:add_watch_area %}">{% trans "add a watch area" %}</a>
     </ul>
+    <a href="{% url pybb:add_watch_area %}" class="btn btn-mini">{% trans "Add Watch Area" %}</a>
+
+</div>
+
 {% endblock content %}
