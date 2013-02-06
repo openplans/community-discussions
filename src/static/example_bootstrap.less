@@ -67,6 +67,11 @@
 
 h1 { font-size: @baseFontSize * 2.25; }
 
+blockquote {
+  color: @grayLight;
+  font-size: @baseFontSize * 0.85;
+}
+
 .site-footer {
   font-size: 85%;
   margin-top: @baseLineHeight * 4;
@@ -347,7 +352,7 @@ label.checkbox {
 .post:first-child .post-content {
   font-size: @baseFontSize * 1.25;
   line-height: @baseLineHeight * 1.25;
-  border-bottom: 10px solid @grayLighter;
+  border-bottom-color: @grayLight;
 }
 
 .post-header,
@@ -377,10 +382,13 @@ label.checkbox {
   .pull-right;
 }
 .post-signature {
-  color: #CCC;
-  margin-top: 15px;
-  border-top: 1px dotted #CCC;
+  font-size: @baseFontSize * 0.85;
+  color: @grayLight;
+  margin-top: @baseLineHeight * 0.85;
+  padding-top: @baseLineHeight * 0.5;
+  border-top: 1px dotted @grayLighter;
   display: block;
+  font-style: italic;
 }
 .post-related {
   a {
