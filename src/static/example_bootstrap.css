@@ -8250,3 +8250,171 @@ label.checkbox {
 .post-related a .badge {
   top: 0;
 }
+/* --------------------------------------------------
+ * Watch Areas
+ -------------------------------------------------- */
+#watch-area-map-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#watch-area-map {
+  width: 100%;
+  height: 350px;
+}
+.watch-area-confirm-delete .watch-area-form-container button {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  *background-color: #e6e6e6;
+  border: 1px solid #bbbbbb;
+  *border: 0;
+  border-bottom-color: #a2a2a2;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  *margin-left: .3em;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  border-color: #c5c5c5;
+  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #5d8e23;
+  background-image: -moz-linear-gradient(top, #6b8e23, #478e23);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6b8e23), to(#478e23));
+  background-image: -webkit-linear-gradient(top, #6b8e23, #478e23);
+  background-image: -o-linear-gradient(top, #6b8e23, #478e23);
+  background-image: linear-gradient(to bottom, #6b8e23, #478e23);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6b8e23', endColorstr='#ff478e23', GradientType=0);
+  border-color: #478e23 #478e23 #295114;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #478e23;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.watch-area-confirm-delete .watch-area-form-container button:hover,
+.watch-area-confirm-delete .watch-area-form-container button:active,
+.watch-area-confirm-delete .watch-area-form-container button.active,
+.watch-area-confirm-delete .watch-area-form-container button.disabled,
+.watch-area-confirm-delete .watch-area-form-container button[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+.watch-area-confirm-delete .watch-area-form-container button:active,
+.watch-area-confirm-delete .watch-area-form-container button.active {
+  background-color: #cccccc \9;
+}
+.watch-area-confirm-delete .watch-area-form-container button:hover,
+.watch-area-confirm-delete .watch-area-form-container button:active,
+.watch-area-confirm-delete .watch-area-form-container button.active,
+.watch-area-confirm-delete .watch-area-form-container button.disabled,
+.watch-area-confirm-delete .watch-area-form-container button[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+.watch-area-confirm-delete .watch-area-form-container button:active,
+.watch-area-confirm-delete .watch-area-form-container button.active {
+  background-color: #cccccc \9;
+}
+.watch-area-confirm-delete .watch-area-form-container button:first-child {
+  *margin-left: 0;
+}
+.watch-area-confirm-delete .watch-area-form-container button:first-child {
+  *margin-left: 0;
+}
+.watch-area-confirm-delete .watch-area-form-container button:hover {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+.watch-area-confirm-delete .watch-area-form-container button:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.watch-area-confirm-delete .watch-area-form-container button.active,
+.watch-area-confirm-delete .watch-area-form-container button:active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+}
+.watch-area-confirm-delete .watch-area-form-container button.disabled,
+.watch-area-confirm-delete .watch-area-form-container button[disabled] {
+  cursor: default;
+  background-image: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.watch-area-confirm-delete .watch-area-form-container button .label,
+.watch-area-confirm-delete .watch-area-form-container button .badge {
+  position: relative;
+  top: -1px;
+}
+.watch-area-confirm-delete .watch-area-form-container button:hover,
+.watch-area-confirm-delete .watch-area-form-container button:active,
+.watch-area-confirm-delete .watch-area-form-container button.active,
+.watch-area-confirm-delete .watch-area-form-container button.disabled,
+.watch-area-confirm-delete .watch-area-form-container button[disabled] {
+  color: #ffffff;
+  background-color: #478e23;
+  *background-color: #3d7a1e;
+}
+.watch-area-confirm-delete .watch-area-form-container button:active,
+.watch-area-confirm-delete .watch-area-form-container button.active {
+  background-color: #336519 \9;
+}
+.watch-area-confirm-delete .watch-area-form-container button:hover,
+.watch-area-confirm-delete .watch-area-form-container button:active,
+.watch-area-confirm-delete .watch-area-form-container button.active,
+.watch-area-confirm-delete .watch-area-form-container button.disabled,
+.watch-area-confirm-delete .watch-area-form-container button[disabled] {
+  color: #ffffff;
+  background-color: #478e23;
+  *background-color: #3d7a1e;
+}
+.watch-area-confirm-delete .watch-area-form-container button:active,
+.watch-area-confirm-delete .watch-area-form-container button.active {
+  background-color: #336519 \9;
+}
+.watch-area-confirm-delete .watch-area-form-container button .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}

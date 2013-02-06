@@ -94,8 +94,8 @@ h1 { font-size: @baseFontSize * 2.25; }
 @logoColor: desaturate(lighten(@linkColor, 40%), 40%);
 @logoShadow: @logoColor - #222;
 #logo:before, #logo:after {
-  position: absolute;	
-  content: "\0020"; 
+  position: absolute;
+  content: "\0020";
 }
 #logo:before {
   width: 1.5em;
@@ -145,15 +145,15 @@ h1 { font-size: @baseFontSize * 2.25; }
   font-size: inherit;
 }
 
-#markItUpId_body .markItUpEditor, 
-#id_name, 
-#id_login { 
+#markItUpId_body .markItUpEditor,
+#id_name,
+#id_login {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  width: 100%; 
-  padding: @baseLineHeight; 
-  font-family: @sansFontFamily; 
+  width: 100%;
+  padding: @baseLineHeight;
+  font-family: @sansFontFamily;
   font-size: 1em;
   resize: none;
 }
@@ -222,7 +222,7 @@ label.checkbox {
   font-size: 1em;
   resize: none;
   .delete-row {
-    
+
   }
 }
 .poll-answer-form {
@@ -246,7 +246,7 @@ label.checkbox {
     width: 12px;
     height: 12px;
     background: url(css/images/cross-24.png) center center no-repeat scroll;
-    background-size: contain; 
+    background-size: contain;
     overflow: hidden;
     text-indent: -9999px;
   }
@@ -289,10 +289,10 @@ label.checkbox {
 .topic-post-count,
 .topic-view-count,
 .topic-last-post,
-.forum-topic-count, 
-.forum-post-count, 
-.forum-last-post { 
-  font-size: 85%; 
+.forum-topic-count,
+.forum-post-count,
+.forum-last-post {
+  font-size: 85%;
   color: @grayLight;
 }
 
@@ -308,8 +308,8 @@ label.checkbox {
   position: relative;
 }
 .state-indicator:after {
-  position: absolute;	
-  content: "\0020"; 
+  position: absolute;
+  content: "\0020";
 	width: 0em;
 	height: 0em;
 	border-bottom: 0.4em solid transparent;
@@ -341,12 +341,12 @@ label.checkbox {
  -------------------------------------------------- */
 
 .posts {}
-.post { 
-  margin-bottom: @baseLineHeight * 0.5; 
+.post {
+  margin-bottom: @baseLineHeight * 0.5;
 }
-.post:first-child .post-content { 
+.post:first-child .post-content {
   font-size: @baseFontSize * 1.25;
-  line-height: @baseLineHeight * 1.25; 
+  line-height: @baseLineHeight * 1.25;
   border-bottom: 10px solid @grayLighter;
 }
 
@@ -366,14 +366,14 @@ label.checkbox {
 .post-info {
   .avatar {
     .pull-left;
-    margin-right: 10px; 
+    margin-right: 10px;
   }
   .permalink { font-size: @baseFontSize * 0.85; }
   .post-author { padding: 0; font-weight: bold; font-size: @baseFontSize * 1.25; }
   .post-extra-info { font-size: @baseFontSize * 0.85; color: @grayLight; }
 }
-.post-controls { 
-  font-size: @baseFontSize * 0.85; 
+.post-controls {
+  font-size: @baseFontSize * 0.85;
   .pull-right;
 }
 .post-signature {
@@ -390,3 +390,37 @@ label.checkbox {
   }
 }
 
+/* --------------------------------------------------
+ * Watch Areas
+ -------------------------------------------------- */
+
+#watch-area-map-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#watch-area-map {
+  width: 100%;
+  height: 350px;
+}
+
+.watch-area-confirm-delete {
+  .watch-area-form-container .actions {
+  }
+
+  .watch-area-form-container button {
+    .btn;
+    .btn-primary;
+  }
+
+  .watch-area-form-container h2 {
+  }
+
+  .watch-area-form-container a {
+  }
+}
