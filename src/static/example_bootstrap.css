@@ -7605,6 +7605,10 @@ a.badge:hover {
 h1 {
   font-size: 31.5px;
 }
+blockquote {
+  color: #999999;
+  font-size: 11.9px;
+}
 .site-footer {
   font-size: 85%;
   margin-top: 80px;
@@ -8065,7 +8069,7 @@ label.checkbox {
 .post:first-child .post-content {
   font-size: 17.5px;
   line-height: 25px;
-  border-bottom: 10px solid #eeeeee;
+  border-bottom-color: #999999;
 }
 .post-header,
 .post-content {
@@ -8124,10 +8128,13 @@ label.checkbox {
   float: right;
 }
 .post-signature {
-  color: #CCC;
-  margin-top: 15px;
-  border-top: 1px dotted #CCC;
+  font-size: 11.9px;
+  color: #999999;
+  margin-top: 17px;
+  padding-top: 10px;
+  border-top: 1px dotted #eeeeee;
   display: block;
+  font-style: italic;
 }
 .post-related a {
   display: inline-block;
