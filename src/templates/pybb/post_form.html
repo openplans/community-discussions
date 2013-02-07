@@ -30,7 +30,7 @@
 
           <div class="span5">
               {% include "pybb/form_field.html" with field=form.place %}
-              {% include "pybb/_post_form_map.html" with place_geom=form.place.value %}
+              {% include "pybb/_topic_map.html" with place_geom=form.place.value editable="true" %}
           {% endif %}
 
               {% if form.poll_type %}

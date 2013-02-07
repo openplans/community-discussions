@@ -24,9 +24,7 @@
 
         <div class="span4 pull-right">
 
-          <div id="place-map-container">
-            <div id="place-map"></div>
-          </div>
+        {% include "pybb/_topic_map.html" with place_geom=topic.place editable="false" %}
 
         {% if topic.poll_type != 0 %}
             {% include 'pybb/poll.html' %}

@@ -6,7 +6,13 @@ var CommunityDiscussions = CommunityDiscussions || {};
     var $input = $('#id_place'),
         // Defined in _post_form_map.html
         $centerpoint = $('#centerpoint'),
-        map = new L.Map(options.el, {scrollWheelZoom: false}),
+        map = new L.Map(options.el, {
+          scrollWheelZoom: false,
+          dragging: options.editable,
+          doubleClickZoom: options.editable,
+          boxZoom: options.editable,
+          touchZoom: options.editable
+        }),
         layer = new L.TileLayer(options.tileUrl, {maxZoom: 17, attribution: options.tileAttribution});
 
     map.setView(options.center, 13).addLayer(layer);

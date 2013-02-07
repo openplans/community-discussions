@@ -2,7 +2,7 @@
 <!--[if lte IE 8]>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
 <![endif]-->
-<link rel="stylesheet" href="{{ STATIC_URL }}css/post-form-map.css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/topic-map.css" />
 
 <div id="place-map-container">
   <div id="place-map"></div>
@@ -12,11 +12,12 @@
 </div>
 
 <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
-<script src="{{ STATIC_URL }}js/post-form-map.js"></script>
+<script src="{{ STATIC_URL }}js/topic-map.js"></script>
 <script>
-
   var numberRe = /(-?\d+\.\d*)/g,
+      editable = {{ editable|default:"false" }},
       matches, wkt, center;
+
   {% if place_geom %}
     wkt = '{{ place_geom }}';
     matches = wkt.match(numberRe);
@@ -27,6 +28,7 @@
     el: 'place-map',
     tileUrl: 'http://{s}.tiles.mapbox.com/v3/atogle.map-vo4oycva/{z}/{x}/{y}.png',
     tileAttribution: 'Map data &copy; OpenStreetMap contributors, CC-BY-SA <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>',
+    editable: editable,
     center: center || [40.7199, -73.9996]
   });
 </script>
