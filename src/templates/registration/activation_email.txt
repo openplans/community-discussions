@@ -1,5 +1,8 @@
-Someone (probably you) register on {{site}} with this e-mail address. If it's not you ignore this e-mail.
+Thanks for registering with {{site.name}}!
 
-To activate your account follow this link:
-http://{{site}}/accounts/activate/{{activation_key}}/
-with next {{expiration_days}} days.
+Just <a href="http://{{site}}/accounts/activate/{{activation_key}}/">click here</a> to activate your new account.
+
+Many thanks,
+- the {{site.name}} team
+
+Link doesn't work? Try this URL directly.
