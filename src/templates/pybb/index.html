@@ -4,24 +4,69 @@
 {% block title %}{{ PYBB_DEFAULT_TITLE }}{% endblock title %}
 
 {% block breadcrumb %}
-    {% with extra_crumb="Forum" %}{% include "pybb/breadcrumb.html" %}{% endwith %}
+  {% with extra_crumb="Forum" %}{% include "pybb/breadcrumb.html" %}{% endwith %}
 {% endblock %}
 
 {% block content %}
-    {% if categories %}
-        {% for category in categories %}
-            {% include 'pybb/category.html' %}
-        {% endfor %}
-    {% else %}
-        <h2>{% trans "Forum categories are not created" %}</h2>
-        <a href="{% url admin:pybb_category_add %}">{% trans "Add a category now" %}</a>
-    {% endif %}
-    {% if user.is_authenticated %}
-        <div class="controls">
-            <ul class="inline">
-                <li><a class="btn" href='{% url pybb:topic_latest %}'>{% trans "Last updates in topics" %}</a></li>
-                <li><a class="btn" href='{% url pybb:mark_all_as_read %}'>{% trans "Mark all forums as read" %}</a></li>
-            </ul>
+
+  <h2>{% trans "What are people saying in your neighborhood?" %}</h2>
+
+  <div class="container homepage-container">
+
+    <div class="row">
+
+      <div class="introduction span4">
+        <p class="lead">Planning discussions are happening in places that you care about. Stay informed and give your input. </p>
+        <p class="lead">Create watch areas for every neighborhood you care about. You’ll be notified of what people are saying and how plans are shaping up. </p>
+        <a href="#" class="btn btn-primary btn-large pull-left watch-area-btn">Create Your Watch Area</a>
+        <p class="muted"><small>Already have an account? <a href="#">Log in</a>.</small></p>
+      </div>
+
+      <div class="popular-topics span8">
+        <div class="well well-small">
+          <h3 class="muted">Popular Discussion Topics</h3>
+          <ul class="activity-list unstyled">
+            <li>
+              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
+              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
+            </li>
+            <li>
+              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
+              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
+            </li>
+            <li>
+              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
+              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
+            </li>
+            <li>
+              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
+              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
+            </li>
+            <li>
+              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
+              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
+            </li>
+            <li>
+              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
+              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
+            </li>
+          </ul>
         </div>
-    {% endif %}
+      </div>
+
+    </div>
+
+  </div>
+
+  {% if user.is_authenticated %}
+  {% endif %}
+
 {% endblock content %}
+
+{% block aftercontent %}
+
+<div class="homepage-map-container">
+  <div id="homepage-map">the map</div>
+</div>
+
+{% endblock aftercontent %}
