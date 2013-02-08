@@ -8428,44 +8428,49 @@ label.checkbox {
 /* --------------------------------------------------
  * Home Page
  -------------------------------------------------- */
-.homepage-container {
-  margin-bottom: -210px;
-}
 .introduction {
-  padding-top: 17px;
-  padding-bottom: 230px;
+  padding-bottom: 20px;
 }
-.popular-topics {
-  position: relative;
-}
-.popular-topics .well {
-  background: #ffffff;
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-.popular-topics .well:before {
-  position: absolute;
-  content: "\0020";
-  border-top: 250px solid #fff;
-  top: -3px;
-  right: -5px;
-  bottom: 210px;
-  left: -5px;
-  z-index: 1;
-  background-color: transparent;
-  background-image: -moz-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0));
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0));
-  background-image: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0));
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#00ffffff', GradientType=0);
-}
-.popular-topics h3,
-.popular-topics ul {
-  position: relative;
-  z-index: 2;
+@media (min-width: 768px) {
+  .homepage-container {
+    margin-bottom: -210px;
+  }
+  .introduction {
+    padding-top: 17px;
+    padding-bottom: 230px;
+  }
+  .popular-topics {
+    position: relative;
+  }
+  .popular-topics .well {
+    background: #ffffff;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  .popular-topics .well:before {
+    position: absolute;
+    content: "\0020";
+    border-top: 250px solid #fff;
+    top: -3px;
+    right: -5px;
+    bottom: 210px;
+    left: -5px;
+    z-index: 1;
+    background-color: transparent;
+    background-image: -moz-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0));
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(rgba(255, 255, 255, 0)));
+    background-image: -webkit-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0));
+    background-image: -o-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0));
+    background-image: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0));
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#00ffffff', GradientType=0);
+  }
+  .popular-topics h3,
+  .popular-topics ul {
+    position: relative;
+    z-index: 2;
+  }
 }
 .watch-area-btn {
   margin-right: 10px;
