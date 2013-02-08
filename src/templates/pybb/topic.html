@@ -8,12 +8,12 @@
     <meta name="twitter:url" content="http://{{site}}{{ topic.get_absolute_url }}">
     <meta name="twitter:title" content="{{ topic.name }}">
     <meta name="twitter:description" content="{{topic.head.body_text|safe|truncatechars:256}}">
-    <meta name="twitter:image" content="http://api.tiles.mapbox.com/v3/openplans.map-dmar86ym/url-discussions-civicworks.dotcloud.com%2Fstatic%2Fcss%2Fimages%2Fmarker-e1264d.png({{topic.place.x}},{{topic.place.y}})/{{topic.place.x}},{{topic.place.y}},14/200x200.png">
+    <meta name="twitter:image" content="{{absolute_static}}css/images/logo-200.png">
 
     <meta property="og:title" content="{{ topic.name }}"/>
     <meta property="og:type" content="cause"/>
     <meta property="og:url" content="http://{{site}}{{ topic.get_absolute_url }}"/>
-    <meta property="og:image" content="http://api.tiles.mapbox.com/v3/openplans.map-dmar86ym/url-discussions-civicworks.dotcloud.com%2Fstatic%2Fcss%2Fimages%2Fmarker-e1264d.png({{topic.place.x}},{{topic.place.y}})/{{topic.place.x}},{{topic.place.y}},14/200x200.png"/>
+    <meta property="og:image" content="{{absolute_static}}css/images/logo-200.png"/>
     <meta property="og:site_name" content="{{site.name}}"/>
     <meta property="og:description" content="{{topic.head.body_text|safe|truncatechars:256}}"/>
 
