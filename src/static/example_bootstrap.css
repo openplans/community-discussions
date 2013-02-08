@@ -8527,3 +8527,30 @@ h4.feature.notifications {
 h4.feature.voice {
   background: url(css/images/voice.png) center top no-repeat scroll;
 }
+/* --------------------------------------------------
+ * Social Sharing Icons
+ -------------------------------------------------- */
+.sharing {
+  height: 32px;
+  width: 32px;
+  display: block;
+  margin: 0 0 10px 10px;
+  text-indent: -9999px;
+  float: right;
+}
+.sharing.twitter {
+  background: url(css/images/twitter-32.png) center center no-repeat scroll;
+}
+.sharing.facebook {
+  background: url(css/images/facebook-32.png) center center no-repeat scroll;
+}
+@media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+  .sharing.twitter {
+    background: url(css/images/twitter-64.png) center center no-repeat scroll;
+    background-size: contain;
+  }
+  .sharing.facebook {
+    background: url(css/images/facebook-64.png) center center no-repeat scroll;
+    background-size: contain;
+  }
+}
