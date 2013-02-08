@@ -15,7 +15,7 @@ var CommunityDiscussions = CommunityDiscussions || {};
         }),
         layer = new L.TileLayer(options.tileUrl, {maxZoom: 17, attribution: options.tileAttribution});
 
-    map.setView(options.center, 13).addLayer(layer);
+    map.setView(options.center, 14).addLayer(layer);
     setPlace(map.getCenter());
 
     map.on('move', function(evt) {
