@@ -443,11 +443,11 @@ label.checkbox {
 }
 @media (min-width: 768px) {
   .homepage-container {
-    margin-bottom: -210px;
+    margin-bottom: -235px;
   }
   .introduction {
     padding-top: @baseLineHeight * 0.85;
-    padding-bottom: @baseLineHeight + 210;
+    padding-bottom: @baseLineHeight + 235;
   }
   .popular-topics {
     position: relative;
@@ -474,6 +474,11 @@ label.checkbox {
       background-repeat: repeat-x; 
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#00ffffff', GradientType=0);
     }
+    h3 {
+      .btn {
+        margin-top: -0.5em;
+      }
+    }
     h3, ul {
       position: relative;
     	z-index: 2;
@@ -481,10 +486,31 @@ label.checkbox {
   }
 }
 
-.watch-area-btn {
-  margin-right: @baseLineHeight / 2;
+@media (min-width: 1200px) {
+  .watch-area-btn {
+    .pull-left;
+    margin-right: @baseLineHeight / 2;
+  }
 }
+
 .homepage-map-container {
   height: 240px;
   background: #ccc;
 }
+
+.activity-list {
+  margin: 0;
+  h4 { margin: 0 0 5px; }
+  p { margin: 0; }
+  li {
+    background: @white;
+    .box-shadow( 0 0 4px rgba(0,0,0,0.25) );
+    .border-radius( 2px );
+    margin: 5px 0 0;
+    padding: @baseLineHeight / 2;
+  } 
+  .avatar {
+    margin: 0 5px 0 0;
+  }
+}
+
