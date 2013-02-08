@@ -19,7 +19,10 @@
         <p class="lead">Planning discussions are happening in places that you care about. Stay informed and give your input. </p>
         <p class="lead">Create watch areas for every neighborhood you care about. You’ll be notified of what people are saying and how plans are shaping up. </p>
         <a href="#" class="btn btn-primary btn-large watch-area-btn">Create Your Watch Area</a>
+        {% if user.is_authenticated %}
+        {% else %}
         <p class="muted"><small>Already have an account? <a href="#">Log in</a>.</small></p>
+        {% endif %}
       </div>
 
       <div class="popular-topics span8">
@@ -66,9 +69,6 @@
     </div>
 
   </div>
-
-  {% if user.is_authenticated %}
-  {% endif %}
 
 {% endblock content %}
 
