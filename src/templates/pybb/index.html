@@ -17,7 +17,7 @@
 
       <div class="introduction span4 clearfix">
         <p class="lead">Planning discussions are happening in places that you care about. Stay informed and give your input. </p>
-        <p class="lead">Create watch areas for every neighborhood you care about. You’ll be notified of what people are saying and how plans are shaping up. </p>
+        <p class="lead">Create watch areas for every neighborhood you care about. You'll be notified of what people are saying and how plans are shaping up. </p>
         <a href="#" class="btn btn-primary btn-large watch-area-btn">Create Your Watch Area</a>
         {% if user.is_authenticated %}
         {% else %}
@@ -76,6 +76,36 @@
 
 <div class="homepage-map-container">
   <div id="homepage-map">the map</div>
+</div>
+
+<div class="features container">
+  <div class="row">
+
+    <div class="span4">
+      <div class="well well-small">
+        <h4 class="feature watch-area">Create Watch Areas</h4>
+        <p>Each watch area you create keeps track of what's happening in that area. </p>
+        <a href="#" class="btn btn-block btn-large">Create a Watch Area</a>
+      </div>
+    </div>  
+
+    <div class="span4">
+      <div class="well well-small">
+        <h4 class="feature notifications">Get Notifications</h4>
+        <p>We send you notifications of activity in your watch areas so you can keep tabs on what's happening. </p>
+        <a href="#" class="btn btn-block btn-large">Register Now</a>
+      </div>
+    </div>  
+
+    <div class="span4">
+      <div class="well well-small">
+        <h4 class="feature voice">Add Your Voice</h4>
+        <p>Your opinion matters. Let your voice be heard. Take part in meaningful conversation. </p>
+        <a href="#" class="btn btn-block btn-large">See All Topics</a>
+      </div>
+    </div>  
+
+  </div>  
 </div>
 
 {% endblock aftercontent %}

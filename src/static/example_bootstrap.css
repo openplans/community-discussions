@@ -8484,6 +8484,7 @@ label.checkbox {
 .homepage-map-container {
   height: 240px;
   background: #ccc;
+  margin-bottom: 40px;
 }
 .activity-list {
   margin: 0;
@@ -8507,4 +8508,22 @@ label.checkbox {
 }
 .activity-list .avatar {
   margin: 0 5px 0 0;
+}
+/* Features */
+.features {
+  margin-bottom: -60px;
+}
+h4.feature {
+  color: #555555;
+  padding-top: 110px;
+  margin-top: 0;
+}
+h4.feature.watch-area {
+  background: url(css/images/watch-area.png) center top no-repeat scroll;
+}
+h4.feature.notifications {
+  background: url(css/images/notifications.png) center top no-repeat scroll;
+}
+h4.feature.voice {
+  background: url(css/images/voice.png) center top no-repeat scroll;
 }
