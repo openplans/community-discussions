@@ -1,7 +1,24 @@
 {% extends 'pybb/base.html' %}
 {% load i18n %}
+{% load static from staticfiles %}
 
 {% block title %}Community Discussions{% endblock title %}
+
+{% block extra_head %}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="http://{{site}}">
+    <meta name="twitter:title" content="{{ site.name }}">
+    <meta name="twitter:description" content="{% trans "Planning discussions are happening in places that you care about. Stay informed and give your input. Create watch areas for every neighborhood you care about. You'll be notified of what people are saying and how plans are shaping up." %}">
+    <meta name="twitter:image" content="{{absolute_static}}css/images/logo-200.png">
+
+    <meta property="og:title" content="{{ site.name }}"/>
+    <meta property="og:type" content="cause"/>
+    <meta property="og:url" content="http://{{site}}"/>
+    <meta property="og:image" content="{{absolute_static}}css/images/logo-200.png"/>
+    <meta property="og:site_name" content="{{site.name}}"/>
+    <meta property="og:description" content="{% trans "Planning discussions are happening in places that you care about. Stay informed and give your input. Create watch areas for every neighborhood you care about. You'll be notified of what people are saying and how plans are shaping up." %}"/>
+
+{% endblock %}
 
 {% block breadcrumb %}
   {% with extra_crumb="Forum" %}{% include "pybb/breadcrumb.html" %}{% endwith %}
@@ -9,7 +26,10 @@
 
 {% block content %}
 
-  <div id="site-sharing" class="visible-tablet visible-desktop pull-right"></div>
+  <div id="site-sharing" class="visible-tablet visible-desktop pull-right">
+    <a class="sharing facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://{{site}}" target="_blank">{% trans "Share on Facebook" %}</a>
+    <a class="sharing twitter" href="https://twitter.com/intent/tweet?source=webclient&text={% trans "Planning discussions are happening in places that you care about. Stay informed and give your input." %}&url=http://{{site}}" target="_blank">{% trans "Share on Twitter" %}</a>
+  </div>
 
   <h2>{% trans "What are people saying in your neighborhood?" %}</h2>
 
@@ -89,7 +109,7 @@
         <p>Each watch area you create keeps track of what's happening in that area. </p>
         <a href="#" class="btn btn-block btn-large">Create a Watch Area</a>
       </div>
-    </div>  
+    </div>
 
     <div class="span4">
       <div class="well well-small">
@@ -97,7 +117,7 @@
         <p>We send you notifications of activity in your watch areas so you can keep tabs on what's happening. </p>
         <a href="#" class="btn btn-block btn-large">Register Now</a>
       </div>
-    </div>  
+    </div>
 
     <div class="span4">
       <div class="well well-small">
@@ -105,9 +125,9 @@
         <p>Your opinion matters. Let your voice be heard. Take part in meaningful conversation. </p>
         <a href="#" class="btn btn-block btn-large">See All Topics</a>
       </div>
-    </div>  
+    </div>
 
-  </div>  
+  </div>
 </div>
 
 {% endblock aftercontent %}
