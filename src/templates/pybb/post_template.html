@@ -6,8 +6,8 @@
   <header class="post-header span7">
 
     <div class="post-controls">
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://{{site}}{{ post.get_absolute_url }}" target="_blank">Share on Facebook</a>
-      <a href="https://twitter.com/intent/tweet?source=webclient&text={{ post.body_text|safe|truncatechars:100 }}&url=http://{{site}}{{ post.get_absolute_url }}" target="_blank">Share on Twitter</a>
+      <a class="sharing facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://{{site}}{{ post.get_absolute_url }}" target="_blank">{% trans "Share on Facebook" %}</a>
+      <a class="sharing twitter" href="https://twitter.com/intent/tweet?source=webclient&text={{ post.body_text|safe|truncatechars:100 }}&url=http://{{site}}{{ post.get_absolute_url }}" target="_blank">{% trans "Share on Twitter" %}</a>
       <div class="btn-toolbar">
        <div class="btn-group">
           {% if user.is_moderator or post|pybb_posted_by:user %}
