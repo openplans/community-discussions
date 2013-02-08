@@ -48,6 +48,9 @@ safe src/manage.py syncdb --all --noinput
 echo "Setting up static file service..."
 safe src/manage.py collectstatic --noinput
 
+echo "Upate the PYBBM app..."
+safe pip install git+https://github.com/openplans/pybbm.git --upgrade
+
 echo "Configuring nginx to serve static files..."
 cat >> nginx.conf <<EOF
 location /static/ { root /home/dotcloud/current ; }
