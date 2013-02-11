@@ -1,4 +1,5 @@
 {% load url from future %}
+{% load static %}
 
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
 <!--[if lte IE 8]>
@@ -27,6 +28,14 @@
     el: 'homepage-map',
     tileUrl: 'http://{s}.tiles.mapbox.com/v3/openplans.map-dmar86ym/{z}/{x}/{y}.png',
     tileAttribution: 'Map data &copy; OpenStreetMap contributors, CC-BY-SA <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>',
+    icon: L.icon({
+      iconUrl: '{% static "css/images/marker-e1264d.png" %}',
+      shadowUrl: '{% static "css/images/marker-shadow.png" %}',
+      iconSize: L.point(25, 41),
+      iconAnchor: L.point(12, 41),
+      popupAnchor: L.point(1, -34),
+      shadowSize: L.point(41, 41)
+    }),
     center: center || [40.7199, -73.9996],
     topics: topics
   });

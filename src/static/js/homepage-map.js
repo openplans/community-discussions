@@ -16,7 +16,7 @@ var CommunityDiscussions = CommunityDiscussions || {};
       topic = options.topics[i];
 
       // Construct and bind events to the topic marker
-      marker = L.marker([topic.place.y, topic.place.x]);
+      marker = L.marker([topic.place.y, topic.place.x], { icon: options.icon });
       marker.bindPopup('<a href="'+topic.url+'">'+topic.name+'</a>');
 
       // Add to the feature group (already on the map)
