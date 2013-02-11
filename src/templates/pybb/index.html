@@ -38,18 +38,19 @@
     <div class="row">
 
       <div class="introduction span4 clearfix">
-        <p class="lead">Planning discussions are happening in places that you care about. Stay informed and give your input. </p>
-        <p class="lead">Create watch areas for every neighborhood you care about. You'll be notified of what people are saying and how plans are shaping up. </p>
-        <a href="#" class="btn btn-primary btn-large watch-area-btn">Create Your Watch Area</a>
+        <p class="lead">{% trans "Planning discussions are happening in places that you care about. Stay informed and give your input." %}</p>
+        <p class="lead">{% trans "Create watch areas for every neighborhood you care about. You'll be notified of what people are saying and how plans are shaping up." %}</p>
+        <a href="#" class="btn btn-primary btn-large watch-area-btn">{% trans "Create Your Watch Area" %}</a>
         {% if user.is_authenticated %}
+        <!-- TODO: Show something different for logged-in users -->
         {% else %}
-        <p class="muted"><small>Already have an account? <a href="#">Log in</a>.</small></p>
+        <p class="muted"><small>{% trans "Already have an account? <a href="#">Log in</a>." %}</small></p>
         {% endif %}
       </div>
 
       <div class="popular-topics span8">
         <div class="well well-small">
-          <h3 class="muted">Popular Discussion Topics <a href="#" class="btn btn-small btn-info">See All Topics</a></h3>
+          <h3 class="muted">{% trans "Popular Discussion Topics" %} <a href="#" class="btn btn-small btn-info">{% trans "See All Topics" %}</a></h3>
 
           <ul class="activity-list unstyled">
 
@@ -105,25 +106,25 @@
 
     <div class="span4">
       <div class="well well-small">
-        <h4 class="feature watch-area">Create Watch Areas</h4>
-        <p>Each watch area you create keeps track of what's happening in that area. </p>
-        <a href="#" class="btn btn-block btn-large">Create a Watch Area</a>
+        <h4 class="feature watch-area">{% trans "Create Watch Areas" %}</h4>
+        <p>{% trans "Each watch area you create keeps track of what's happening in that area." %}</p>
+        <a href="#" class="btn btn-block btn-large">{% trans "Create a Watch Area" %}</a>
       </div>
     </div>
 
     <div class="span4">
       <div class="well well-small">
-        <h4 class="feature notifications">Get Notifications</h4>
-        <p>We send you notifications of activity in your watch areas so you can keep tabs on what's happening. </p>
-        <a href="#" class="btn btn-block btn-large">Register Now</a>
+        <h4 class="feature notifications">{% trans "Get Notifications" %}</h4>
+        <p>{% trans "We send you notifications of activity in your watch areas so you can keep tabs on what's happening." %}</p>
+        <a href="#" class="btn btn-block btn-large">{% trans "Register Now" %}</a>
       </div>
     </div>
 
     <div class="span4">
       <div class="well well-small">
-        <h4 class="feature voice">Add Your Voice</h4>
-        <p>Your opinion matters. Let your voice be heard. Take part in meaningful conversation. </p>
-        <a href="#" class="btn btn-block btn-large">See All Topics</a>
+        <h4 class="feature voice">{% trans "Add Your Voice" %}</h4>
+        <p>{% trans "Your opinion matters. Let your voice be heard. Take part in meaningful conversation." %}</p>
+        <a href="#" class="btn btn-block btn-large">{% trans "See All Topics" %}</a>
       </div>
     </div>
 
