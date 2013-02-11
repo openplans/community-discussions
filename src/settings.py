@@ -16,6 +16,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
+FORUM_ID = 1
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'

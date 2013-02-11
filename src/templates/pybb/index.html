@@ -51,7 +51,7 @@
 
       <div class="popular-topics span8">
         <div class="well well-small">
-          <h3 class="muted">{% trans "Popular Discussion Topics" %} <a href="#" class="btn btn-small btn-info">{% trans "See All Topics" %}</a></h3>
+          <h3 class="muted">{% trans "Popular Discussion Topics" %} <a href="{% url 'global_forum' %}" class="btn btn-small btn-info">{% trans "See All Topics" %}</a></h3>
 
           <ul class="activity-list unstyled">
 
@@ -103,7 +103,7 @@
       <div class="well well-small">
         <h4 class="feature voice">{% trans "Add Your Voice" %}</h4>
         <p>{% trans "Your opinion matters. Let your voice be heard. Take part in meaningful conversation." %}</p>
-        <a href="#" class="btn btn-block btn-large">{% trans "See All Topics" %}</a>
+        <a href="{% url 'global_forum' %}" class="btn btn-block btn-large">{% trans "See All Topics" %}</a>
       </div>
     </div>
 
