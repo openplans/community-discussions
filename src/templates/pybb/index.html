@@ -42,9 +42,9 @@
         <p class="lead">{% trans "Planning discussions are happening in places that you care about. Stay informed and give your input." %}</p>
         <p class="lead">{% trans "Create watch areas for every neighborhood you care about. You'll be notified of what people are saying and how plans are shaping up." %}</p>
         {% if user.is_authenticated %}
-        <!-- TODO: Show something different for logged-in users -->
+        <a href="{% url 'pybb:edit_profile' %}#profile__watch-areas" class="btn btn-primary btn-large watch-area-btn">{% trans "See Your Watch Areas" %}</a>
         {% else %}
-        <a href="#" class="btn btn-primary btn-large watch-area-btn">{% trans "Create Your Watch Area" %}</a>
+        <a href="{% url 'pybb:add_watch_area' %}" class="btn btn-primary btn-large watch-area-btn">{% trans "Create Your Watch Area" %}</a>
         <p class="muted"><small>{% trans "Already have an account?" %} <a href="#">{% trans "Log in" %}</a>. %}</small></p>
         {% endif %}
       </div>

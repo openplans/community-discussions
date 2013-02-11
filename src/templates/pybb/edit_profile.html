@@ -29,7 +29,7 @@
 
 <div class="span4 pull-right">
 
-    <h3>{% trans "Topic Subscriptions" %}</h3>
+    <h3 id="profile__subscriptions">{% trans "Topic Subscriptions" %}</h3>
     <ul class="subscriptions">
         {% for sub in user.subscriptions.all %}
             <li>
@@ -44,16 +44,16 @@
 
 <br />
 
-    <h3>{% trans "Watch Areas" %}</h3>
+    <h3 id="profile__watch-areas">{% trans "Watch Areas" %}</h3>
     <ul class="watch-areas">
 
         {% comment %}
-          TODO:
+     <!-- TODO:
           -----
           The following loop should iterate over the union of the user's
           own watch areas as well as the watch areas that belong to other
           users that this user watches. For now a user only subscribes to
-          watch areas that she owns.
+          watch areas that she owns. -->
         {% endcomment %}
 
         {% for sub in user.watch_areas.all %}
