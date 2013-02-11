@@ -8441,6 +8441,7 @@ label.checkbox {
   }
   .popular-topics {
     position: relative;
+    z-index: 2;
   }
   .popular-topics .well {
     background: #ffffff;
