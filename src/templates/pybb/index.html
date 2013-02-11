@@ -1,6 +1,7 @@
 {% extends 'pybb/base.html' %}
 {% load i18n %}
 {% load static from staticfiles %}
+{% load url from future %}
 
 {% block title %}Community Discussions{% endblock title %}
 
@@ -40,11 +41,11 @@
       <div class="introduction span4 clearfix">
         <p class="lead">{% trans "Planning discussions are happening in places that you care about. Stay informed and give your input." %}</p>
         <p class="lead">{% trans "Create watch areas for every neighborhood you care about. You'll be notified of what people are saying and how plans are shaping up." %}</p>
-        <a href="#" class="btn btn-primary btn-large watch-area-btn">{% trans "Create Your Watch Area" %}</a>
         {% if user.is_authenticated %}
         <!-- TODO: Show something different for logged-in users -->
         {% else %}
-        <p class="muted"><small>{% trans "Already have an account? <a href="#">Log in</a>." %}</small></p>
+        <a href="#" class="btn btn-primary btn-large watch-area-btn">{% trans "Create Your Watch Area" %}</a>
+        <p class="muted"><small>{% trans "Already have an account?" %} <a href="#">{% trans "Log in" %}</a>. %}</small></p>
         {% endif %}
       </div>
 
@@ -54,35 +55,15 @@
 
           <ul class="activity-list unstyled">
 
+          {% for topic in featured_topics %}
+            {% with topic.last_post as post %}
             <li class="clearfix">
-              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
+              <h4><a href="{% url 'pybb:post' post.pk %}">{{ topic.name }} <small class="text-info"><time datetime="{{ post.created.isoformat }}">{{ post.created }}</time></small></a></h4>
               <img src="{{PYBB_DEFAULT_AVATAR_URL}}" alt="avatar" class="avatar pull-left" />
-              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
+              <p><strong>{{ post.user.username }}</strong> "{{ post.summary }}"</p>
             </li>
-
-            <li class="clearfix">
-              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
-              <img src="{{PYBB_DEFAULT_AVATAR_URL}}" alt="avatar" class="avatar pull-left" />
-              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
-            </li>
-
-            <li class="clearfix">
-              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
-              <img src="{{PYBB_DEFAULT_AVATAR_URL}}" alt="avatar" class="avatar pull-left" />
-              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
-            </li>
-
-            <li class="clearfix">
-              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
-              <img src="{{PYBB_DEFAULT_AVATAR_URL}}" alt="avatar" class="avatar pull-left" />
-              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
-            </li>
-
-            <li class="clearfix">
-              <h4><a href="#">Make Wynnewood Road Safe for Walkers <small class="text-info">today, 16:05</small></a></h4>
-              <img src="{{PYBB_DEFAULT_AVATAR_URL}}" alt="avatar" class="avatar pull-left" />
-              <p><strong>Frank</strong> "Wynnewood road is a huge barrier to walking in the Narberth, Wynnewood, and Merion Station communities. There are shared amenities and activities in each community that&hellip;"</p>
-            </li>
+            {% endwith %}
+          {% endfor %}
 
           </ul>
 
