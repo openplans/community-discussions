@@ -1,0 +1,34 @@
+{% load url from future %}
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+<![endif]-->
+<link rel="stylesheet" href="{{ STATIC_URL }}css/homepage-map.css" />
+
+<div class="homepage-map-container">
+  <div id="homepage-map">the map</div>
+</div>
+
+<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+<script src="{{ STATIC_URL }}js/homepage-map.js"></script>
+<script>
+  var center, topics = [];
+
+  {% for topic in featured_topics %}
+    topics.push({
+      place: { x: {{topic.place.x}}, y: {{topic.place.y}} },
+      name: '{{ topic.name }}',
+      url: '{% url "pybb:topic" topic.pk %}'
+    });
+  {% endfor %}
+
+  CommunityDiscussions.initHomepageMap({
+    el: 'homepage-map',
+    tileUrl: 'http://{s}.tiles.mapbox.com/v3/openplans.map-dmar86ym/{z}/{x}/{y}.png',
+    tileAttribution: 'Map data &copy; OpenStreetMap contributors, CC-BY-SA <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>',
+    center: center || [40.7199, -73.9996],
+    topics: topics
+  });
+</script>
+
