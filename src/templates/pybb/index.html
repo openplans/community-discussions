@@ -87,7 +87,7 @@
       <div class="well well-small">
         <h4 class="feature watch-area">{% trans "Create Watch Areas" %}</h4>
         <p>{% trans "Each watch area you create keeps track of what's happening in that area." %}</p>
-        <a href="#" class="btn btn-block btn-large">{% trans "Create a Watch Area" %}</a>
+        <a href="{% url 'pybb:add_watch_area' %}" class="btn btn-block btn-large">{% trans "Create a Watch Area" %}</a>
       </div>
     </div>
 
@@ -95,7 +95,11 @@
       <div class="well well-small">
         <h4 class="feature notifications">{% trans "Get Notifications" %}</h4>
         <p>{% trans "We send you notifications of activity in your watch areas so you can keep tabs on what's happening." %}</p>
-        <a href="#" class="btn btn-block btn-large">{% trans "Register Now" %}</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'pybb:edit_profile' %}" class="btn btn-block btn-large">{% trans "View Profile" %}</a>
+        {% else %}
+          <a href="{% url 'registration_register' %}" class="btn btn-block btn-large">{% trans "Register Now" %}</a>
+        {% endif %}
       </div>
     </div>
 
