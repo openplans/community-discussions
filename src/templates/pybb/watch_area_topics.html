@@ -1,17 +1,17 @@
 {% extends 'pybb/base.html' %}
 {% load pybb_tags i18n %}
 
-{% block title %}{% trans "Last updates in watch area" %}{% endblock title %}
+{% block title %}{% blocktrans %}Last updates in &quot;{{ watch_area }}&quot;{% endblocktrans %}{% endblock title %}
 
 {% block breadcrumb %}
-    {% with extra_crumb=_("Last updates in topics") %}
+    {% with extra_crumb=_("Last updates in watch area") %}
         {% include "pybb/breadcrumb.html" %}
     {% endwith %}
 {% endblock %}
 
 {% block content %}
     <div class="watch-area forum">
-        <h1>{% trans "Last updates in watch area" %}</h1>
+        <h1>{% blocktrans %}Last updates in &quot;{{ watch_area }}&quot;{% endblocktrans %}</h1>
 
         <link rel="stylesheet" href="{{ STATIC_URL }}css/watch-area-topics-map.css" />
         <div id="watch-area-map-container">
