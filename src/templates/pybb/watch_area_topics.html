@@ -10,13 +10,29 @@
 {% endblock %}
 
 {% block content %}
-    <div class="forum">
+    <div class="watch-area forum">
         <h1>{% trans "Last updates in watch area" %}</h1>
 
         <link rel="stylesheet" href="{{ STATIC_URL }}css/watch-area-topics-map.css" />
         <div id="watch-area-map-container">
           <div id="watch-area-map"></div>
         </div>
+
+        <div class="watch-area-subscribe">
+          <a data-add-subscription-href="{% url pybb:add_watch_area_subscription watch_area.id %}"
+              data-delete-subscription-href="{% url pybb:delete_watch_area_subscription watch_area.id %}"
+              data-add-subscription-label="{% trans 'Get emails for new topics' %}"
+              data-delete-subscription-label="{% trans 'Stop watching' %}"
+          {% if user in watch_area.watchers.all %}
+              class="delete-subscription btn btn-primary" href="{% url pybb:delete_watch_area_subscription watch_area.id %}">
+              {% trans 'Stop watching' %}
+          {% else %}
+              class="add-subscription btn btn-primary" href="{% url pybb:add_watch_area_subscription watch_area.id %}">
+              {% trans 'Get emails for new topics' %}
+          {% endif %} <i class="subscription-icon"></i>
+          </a>
+        </div>
+
         {% include "pybb/_watch_area_map.html" with editable="false" fence=watch_area.fence|safe %}
 
         {% if forum.headline %}

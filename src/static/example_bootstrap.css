@@ -8260,6 +8260,21 @@ label.checkbox {
 /* --------------------------------------------------
  * Watch Areas
  -------------------------------------------------- */
+.watch-area {
+  position: relative;
+}
+.watch-area-subscribe,
+.watch-area-subscribe .btn {
+  width: 100%;
+}
+.watch-area-subscribe .add-subscription .subscription-icon,
+.watch-area-subscribe .btn .add-subscription .subscription-icon {
+  background-position: -96px -120px;
+}
+.watch-area-subscribe .delete-subscription .subscription-icon,
+.watch-area-subscribe .btn .delete-subscription .subscription-icon {
+  background-position: -120px -120px;
+}
 #watch-area-map-container {
   position: relative;
   width: 100%;
@@ -8424,6 +8439,17 @@ label.checkbox {
 .watch-area-confirm-delete .watch-area-form-container button .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
+}
+@media (min-width: 980px) {
+  .watch-area-subscribe,
+  .watch-area-subscribe .btn {
+    width: auto;
+  }
+  .watch-area-subscribe {
+    position: absolute;
+    top: 6px;
+    right: 0;
+  }
 }
 /* --------------------------------------------------
  * Home Page
