@@ -47,6 +47,12 @@
 
         {% include "pybb/pagination.html" %}
 
+        {% if PYBB_ENABLE_ANONYMOUS_POST or not user.get_profile.is_banned %}
+            <div class="controls">
+                {% include "pybb/_button_new_topic.html" %}
+            </div>
+        {% endif %}
+
         {% if user.is_authenticated %}
             <div id='mark-all-as-read'>
                 <a href='{% url pybb:mark_all_as_read %}'>
