@@ -3,6 +3,10 @@
 
 {% block title %}{% trans "Profile editing" %}{% endblock title %}
 
+{% block breadcrumb %}
+    {% include "pybb/breadcrumb.html" with object=None extra_crumb=_('Profile') %}
+{% endblock %}
+
 {% block content %}
 
 <div class="span7">
