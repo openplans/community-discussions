@@ -60,5 +60,14 @@
                 </a>
             </div>
         {% endif %}
+
+        {% if user.is_authenticated %}
+            <div class="subscriber-list">
+                {% trans "Watchers" %}:
+                {% for watcher in watch_area.watchers.all %}
+                    <a href="{% url pybb:user watcher.username %}">{{ watcher.username }}</a>{% if not forloop.last %}, {% endif%}
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 {% endblock content %}
