@@ -112,11 +112,11 @@
             {% include 'pybb/_need_to_login_message.html' %}
         {% endif %}
 
-        {% if user.is_staff %}
+        {% if user.is_authenticated %}
             <div class="subscriber-list">
                 {% trans "Subscribers" %}:
                 {% for subscriber in topic.subscribers.all %}
-                    <a href="{% url pybb:user subscriber.username %}">{{ subscriber.username }}</a>,
+                    <a href="{% url pybb:user subscriber.username %}">{{ subscriber.username }}</a>{% if not forloop.last %}, {% endif%}
                 {% endfor %}
             </div>
         {% endif %}
