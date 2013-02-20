@@ -22,11 +22,11 @@ var CommunityDiscussions = CommunityDiscussions || {};
       setPlace(map.getCenter());
     });
 
-    map.on('dragstart', function() {
+    map.on('movestart', function() {
       $centerpoint.addClass('dragging');
     });
 
-    map.on('dragend', function() {
+    map.on('moveend', function() {
       $centerpoint.removeClass('dragging');
     });
 
