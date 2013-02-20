@@ -88,6 +88,12 @@
 
           </ul>
 
+          {% if selected_watch_area %}
+          <div class="selected-watch-area-link">
+            <a href="{% url 'pybb:watch_area_topics' selected_watch_area.pk %}">More...</a>
+          </div>
+          {% endif %}
+
         </div>
       </div>
 

@@ -8513,6 +8513,13 @@ label.checkbox {
   background: #ccc;
   margin-bottom: 40px;
 }
+.homepage-watch-area-form {
+  display: inline;
+}
+.selected-watch-area-link {
+  text-align: right;
+  margin-top: 0.5em;
+}
 .activity-list {
   margin: 0;
 }
