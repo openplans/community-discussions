@@ -38,87 +38,94 @@
             {% include "pybb/pagination.html" %}
         {% endwith %}
 
-        <div class="span4 pull-right">
+        <div class="row">
 
-        {% include "pybb/_topic_map.html" with place_geom=topic.place editable="false" %}
+            <div class="span4 pull-right">
+                {% include "pybb/_topic_map.html" with place_geom=topic.place editable="false" %}
 
-        {% if topic.poll_type != 0 %}
-            {% include 'pybb/poll.html' %}
-        {% endif %}
-
-        </div>
-
-        <ul class="posts unstyled">
-            {% if first_post %}{% ifnotequal first_post post_list.0 %}
-                {% with first_post as post %}
-                    <li class="first_post">{% include "pybb/post_template.html" %}</li>
-                {% endwith %}
-            {% endifnotequal %}{% endif %}
-            {% for post in post_list %}
-                {% cycle 'odd' 'even' as rowcolors silent %}
-                {% include "pybb/post_template.html" %}
-            {% endfor %}
-        </ul>
-        <div>&nbsp;</div>
-        {% with _('Posts') as label %}
-            {% include "pybb/pagination.html" %}
-        {% endwith %}
-
-        {% if user.is_authenticated %}
-            <div class="controls">
-                <ul class="inline">
-
-                {% if user.is_moderator %}
-
-                    {% if topic.sticky %}
-                    <li><a class="btn" href="{% url pybb:unstick_topic topic.id %}">{% trans "Unstick topic" %}</a></li>
-                    {% else %}
-                    <li><a class="btn" href="{% url pybb:stick_topic topic.id %}">{% trans "Stick topic" %}</a></li>
-                    {% endif %}
-
-                    {% if topic.closed %}
-                    <li><a class="btn" href="{% url pybb:open_topic topic.id %}">{% trans "Open topic" %}</a></li>
-                    {% else %}
-                    <li><a class="btn" href="{% url pybb:close_topic topic.id %}">{% trans "Close topic" %}</a></li>
-                    {% endif %}
-
-                    {% if perms.pybb.change_topic and user.is_staff %}
-                    <li><a class="btn" href="{% url admin:pybb_topic_change topic.id %}">{% trans 'Admin' %}</a></li>
-                    {% endif %}
-
-                    {% comment %}
-                    <li><a class="btn" href="{% url pybb:merge_topics %}?topic={{ topic.id }}">{% trans 'Merge topics' %}</a></li>
-                    {% endcomment %}
-
+                {% if topic.poll_type != 0 %}
+                  {% include 'pybb/poll.html' %}
                 {% endif %}
-
-                {% if user.is_subscribed %}
-                    <li><a class="btn btn-primary" href="{% url pybb:delete_subscription topic.id %}?from_topic">{% trans "Unsubscribe" %}</a></li>
-                {% else %}
-                    <li><a class="btn btn-primary" href="{% url pybb:add_subscription topic.id %}">{% trans "Subscribe" %}</a></li>
-                {% endif %}
-
-                </ul>
             </div>
-        {% endif %}
 
-        {% if user.is_authenticated or PYBB_ENABLE_ANONYMOUS_POST %}
-            {% if not user.get_profile.is_banned %}
-                {% if not topic.closed %}
-                    {% include "pybb/post_form.html" %}
+            <div class="posts-container span7">
+
+                <ul class="posts unstyled">
+                    {% if first_post %}{% ifnotequal first_post post_list.0 %}
+                        {% with first_post as post %}
+                            <li class="first_post">{% include "pybb/post_template.html" %}</li>
+                        {% endwith %}
+                    {% endifnotequal %}{% endif %}
+                    {% for post in post_list %}
+                        {% cycle 'odd' 'even' as rowcolors silent %}
+                        {% include "pybb/post_template.html" %}
+                    {% endfor %}
+                </ul>
+                <div>&nbsp;</div>
+                {% with _('Posts') as label %}
+                    {% include "pybb/pagination.html" %}
+                {% endwith %}
+
+                {% if user.is_authenticated %}
+                <div class="controls">
+                    <ul class="inline">
+
+                    {% if user.is_moderator %}
+
+                        {% if topic.sticky %}
+                        <li><a class="btn" href="{% url pybb:unstick_topic topic.id %}">{% trans "Unstick topic" %}</a></li>
+                        {% else %}
+                        <li><a class="btn" href="{% url pybb:stick_topic topic.id %}">{% trans "Stick topic" %}</a></li>
+                        {% endif %}
+
+                        {% if topic.closed %}
+                        <li><a class="btn" href="{% url pybb:open_topic topic.id %}">{% trans "Open topic" %}</a></li>
+                        {% else %}
+                        <li><a class="btn" href="{% url pybb:close_topic topic.id %}">{% trans "Close topic" %}</a></li>
+                        {% endif %}
+
+                        {% if perms.pybb.change_topic and user.is_staff %}
+                        <li><a class="btn" href="{% url admin:pybb_topic_change topic.id %}">{% trans 'Admin' %}</a></li>
+                        {% endif %}
+
+                        {% comment %}
+                        <li><a class="btn" href="{% url pybb:merge_topics %}?topic={{ topic.id }}">{% trans 'Merge topics' %}</a></li>
+                        {% endcomment %}
+
+                    {% endif %}
+
+                    {% if user.is_subscribed %}
+                        <li><a class="btn btn-primary" href="{% url pybb:delete_subscription topic.id %}?from_topic">{% trans "Unsubscribe" %}</a></li>
+                    {% else %}
+                        <li><a class="btn btn-primary" href="{% url pybb:add_subscription topic.id %}">{% trans "Subscribe" %}</a></li>
+                    {% endif %}
+
+                    </ul>
+                </div>
                 {% endif %}
-            {% endif %}
-        {% else %}
-            {% include 'pybb/_need_to_login_message.html' %}
-        {% endif %}
 
-        {% if user.is_authenticated %}
-            <div class="subscriber-list">
+                {% if user.is_authenticated or PYBB_ENABLE_ANONYMOUS_POST %}
+                    {% if not user.get_profile.is_banned %}
+                        {% if not topic.closed %}
+                            {% include "pybb/post_form.html" %}
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                    {% include 'pybb/_need_to_login_message.html' %}
+                {% endif %}
+
+            </div><!-- end .posts-container -->
+
+            {% if user.is_authenticated %}
+            <div class="subscriber-list span4 pull-right">
                 {% trans "Subscribers" %}:
                 {% for subscriber in topic.subscribers.all %}
-                    <a href="{% url pybb:user subscriber.username %}">{{ subscriber.username }}</a>{% if not forloop.last %}, {% endif%}
+                <a href="{% url pybb:user subscriber.username %}">{{ subscriber.username }}</a>{% if not forloop.last %}, {% endif%}
                 {% endfor %}
             </div>
-        {% endif %}
-    </div>
+            {% endif %}
+
+        </div><!-- end .row -->
+
+    </div><!-- end .topic-->
 {% endblock %}

@@ -1,9 +1,8 @@
 {% load i18n pybb_tags thumbnail %}
 
 <article class="post {% if post.on_moderation %}on-moderation{% endif %}" id="post-{{ post.id }}" name="post-{{ post.id }}">
-<div class="container">
 
-  <header class="post-header span7">
+  <header class="post-header">
 
     <div class="post-controls">
       <a class="sharing facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://{{site}}{{ post.get_absolute_url }}" target="_blank">{% trans "Share on Facebook" %}</a>
@@ -52,7 +51,7 @@
     </div><!-- end .post-info -->
   </header>
 
-<div class="post-content span7">
+<div class="post-content">
   {{ post.body_html|safe }}
 
   {% if not user.is_authenticated or user.get_profile.show_signatures %}
@@ -87,5 +86,4 @@
 
 </div><!-- end .post-content -->
 
-</div>
 </article>
