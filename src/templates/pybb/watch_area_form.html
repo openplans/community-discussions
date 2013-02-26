@@ -7,16 +7,24 @@
     {% endif %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <fieldset>
-    {% include "pybb/form_errors.html" %}
-    {% if form.name %} {% include "pybb/form_field.html" with field=form.name %} {% endif %}
-    {% if form.login %} {% include "pybb/form_field.html" with field=form.login %}  {% endif %}
-    {% if user.is_staff %} {% include "pybb/form_field.html" with field=form.public %} {% endif %}
 
-    {% if form.fence %}
-      {% include "pybb/form_field.html" with field=form.fence %}
-      {% include "pybb/_watch_area_form_map.html" with fence=form.fence.value %}
-    {% endif %}
-
-    {% include "pybb/_button_submit.html" %}
+    <div class="row">
+      <div class="span4">
+        {% include "pybb/form_errors.html" %}
+        {% if form.name %} {% include "pybb/form_field.html" with field=form.name %} {% endif %}
+        {% if form.login %} {% include "pybb/form_field.html" with field=form.login %}  {% endif %}
+        {% if user.is_staff %} {% include "pybb/form_field.html" with field=form.public %} {% endif %}
+        <p><button id="init-watch-area-btn" class="btn btn-large">{% trans "Start a New Watch Area" %}</button></p>
+      </div>
+      <div class="span7 pull-right">
+        {% if form.fence %}
+          {% include "pybb/form_field.html" with field=form.fence %}
+          {% include "pybb/_watch_area_form_map.html" with fence=form.fence.value %}
+        {% endif %}
+      </div>
+      <div class="span4">
+        {% include "pybb/_button_submit.html" %}
+      </div>
+    </div>
   </fieldset>
 </form>
