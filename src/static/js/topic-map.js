@@ -16,19 +16,22 @@ var CommunityDiscussions = CommunityDiscussions || {};
         layer = new L.TileLayer(options.tileUrl, {maxZoom: 17, attribution: options.tileAttribution});
 
     map.setView(options.center, 14).addLayer(layer);
-    setPlace(map.getCenter());
 
-    map.on('move', function(evt) {
+    if (options.editable){
       setPlace(map.getCenter());
-    });
 
-    map.on('movestart', function() {
-      $centerpoint.addClass('dragging');
-    });
+      map.on('move', function(evt) {
+        setPlace(map.getCenter());
+      });
 
-    map.on('moveend', function() {
-      $centerpoint.removeClass('dragging');
-    });
+      map.on('movestart', function() {
+        $centerpoint.addClass('dragging');
+      });
+
+      map.on('moveend', function() {
+        $centerpoint.removeClass('dragging');
+      });
+    }
 
     function setPlace(latLng) {
       var wkt = 'POINT ('+ latLng.lng +' '+ latLng.lat +')';
