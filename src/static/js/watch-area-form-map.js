@@ -73,8 +73,10 @@ var CommunityDiscussions = CommunityDiscussions || {};
       evt.preventDefault();
 
       // Confirm if an area exists already
-      if (area && window.confirm(options.resetConfirmationMsg)) {
-        resetWatchArea();
+      if (area) {
+        if (window.confirm(options.resetConfirmationMsg)) {
+          resetWatchArea();
+        }
       } else {
         resetWatchArea();
       }
