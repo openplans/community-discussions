@@ -12,3 +12,18 @@
   width: 100%;
   height: 350px;
 }
+
+#watch-area-controls #complete-watch-area {
+  display: none;
+}
+#watch-area-controls #init-watch-area {
+  display: block;
+}
+
+#watch-area-controls.edit #complete-watch-area {
+  display: block;
+}
+
+#watch-area-controls.edit #init-watch-area {
+  display: none;
+}

@@ -15,16 +15,17 @@
         {% if form.name %} {% include "pybb/form_field.html" with field=form.name %} {% endif %}
         {% if form.login %} {% include "pybb/form_field.html" with field=form.login %}  {% endif %}
         {% if user.is_staff %} {% include "pybb/form_field.html" with field=form.public %} {% endif %}
-        <p><button id="init-watch-area-btn" class="btn btn-large">{% trans "Add a Shape" %}</button></p>
+        <div id="watch-area-controls"{% if form.fence.value %} class="edit"{% endif %}>
+          <button id="init-watch-area" class="btn btn-large">{% trans "Add a Shape" %}</button>
+          <div id="complete-watch-area">
+          {% include "pybb/_button_submit.html" %}
+          <a href="#" id="reset-watch-area">Reset Your Watch Area</a>
+          </div>
+        </div>
       </div>
       <div class="span7 pull-right">
-        {% if form.fence %}
-          {% include "pybb/form_field.html" with field=form.fence %}
-          {% include "pybb/_watch_area_form_map.html" with fence=form.fence.value %}
-        {% endif %}
-      </div>
-      <div class="span4">
-        {% include "pybb/_button_submit.html" %}
+        {% include "pybb/form_field.html" with field=form.fence %}
+        {% include "pybb/_watch_area_form_map.html" with fence=form.fence.value %}
       </div>
     </div>
   </fieldset>
