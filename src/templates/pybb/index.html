@@ -67,10 +67,16 @@
           <script>
             $(function() {
               var $watchAreaSelector = $('[name="watch_area"]'),
-                  $watchAreaForm = $('.homepage-watch-area-form');
+                  $watchAreaForm = $('.homepage-watch-area-form'),
+                  $time = $('time');
               $watchAreaSelector.change(function() {
                 $watchAreaForm.submit();
               });
+
+              // Prettify the time tags
+              if (moment) {
+                $time.html( moment($time.attr('datetime')).fromNow() );
+              }
             });
           </script>
 
@@ -100,6 +106,8 @@
     </div>
 
   </div>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
 
 {% endblock content %}
 
