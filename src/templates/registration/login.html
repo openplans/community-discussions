@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+
 {% block title %}
     Login
 {% endblock %}
@@ -9,7 +11,7 @@
 
     <form action='' method=POST class="form-stacked">
     <table>
-            {{form.as_p}}
+            {{form|crispy}}
     </table>
     {% csrf_token %}
        <input type="submit">
