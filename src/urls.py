@@ -13,6 +13,6 @@ urlpatterns = patterns('',
     url('^forum/(?P<forum_id>\d+)/topic/add/$', AddPostView.as_view(), name='add_topic'),
 
     (r'^', include('pybb.urls', namespace='pybb')),
-    (r'^accounts/', include('registration.urls')),
+    (r'^accounts/', include('registration_backends.community_discussions.urls')),
 
 )

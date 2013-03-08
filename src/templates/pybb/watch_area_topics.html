@@ -19,15 +19,20 @@
         </div>
 
         <div class="watch-area-subscribe">
+          {% if watch_area.user == user or user.is_superuser %}
+          <a href="{% url pybb:delete_watch_area watch_area.id %}?prev={{ request.get_full_path }}">Delete</a>
+          <a href="{% url pybb:edit_watch_area watch_area.id %}" class="btn">Edit</a>
+          {% endif %}
+
           <a data-add-subscription-href="{% url pybb:add_watch_area_subscription watch_area.id %}"
               data-delete-subscription-href="{% url pybb:delete_watch_area_subscription watch_area.id %}"
               data-add-subscription-label="{% trans 'Get emails for new topics' %}"
               data-delete-subscription-label="{% trans 'Stop watching' %}"
           {% if user in watch_area.watchers.all %}
-              class="delete-subscription btn btn-primary" href="{% url pybb:delete_watch_area_subscription watch_area.id %}">
+              class="subscription-toggle delete-subscription btn btn-primary" href="{% url pybb:delete_watch_area_subscription watch_area.id %}">
               {% trans 'Stop watching' %}
           {% else %}
-              class="add-subscription btn btn-primary" href="{% url pybb:add_watch_area_subscription watch_area.id %}">
+              class="subscription-toggle add-subscription btn btn-primary" href="{% url pybb:add_watch_area_subscription watch_area.id %}">
               {% trans 'Get emails for new topics' %}
           {% endif %} <i class="subscription-icon"></i>
           </a>

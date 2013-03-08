@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'south',
     'pure_pagination',
+    'crispy_forms',
 
 )
 

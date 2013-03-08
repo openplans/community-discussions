@@ -35,12 +35,20 @@
 
     <h3 id="profile__subscriptions">{% trans "Topic Subscriptions" %}</h3>
     <ul class="subscriptions">
-        {% for sub in user.subscriptions.all %}
+        {% for topic in user.subscriptions.all %}
             <li>
               <p>
-                {% pybb_link sub %}
+                {% pybb_link topic %}
                 &mdash;
-                <strong><a href="{% url pybb:delete_subscription sub.id %}">{% trans "unsubscribe" %}</a></strong>
+
+                <strong>
+                <a data-add-subscription-href="{% url pybb:add_subscription topic.id %}"
+                    data-delete-subscription-href="{% url pybb:delete_subscription topic.id %}"
+                    data-add-subscription-label="{% trans "Subscribe" %}"
+                    data-delete-subscription-label="{% trans "Unsubscribe" %}"
+                    class="topic subscription-toggle delete-subscription" href="{% url pybb:delete_subscription topic.id %}">
+                    {% trans "Unsubscribe" %}</a>
+                </strong>
               </p>
             </li>
         {% endfor %}
@@ -60,17 +68,12 @@
           watch areas that she owns. -->
         {% endcomment %}
 
-        {% for sub in user.watch_areas.all %}
+        {% for topic in user.watch_areas.all %}
             <li>
               <p>
-                {% pybb_link sub %}
+                {% pybb_link topic %}
                 &mdash;
-
-                {% if user in sub.watchers.all %}
-                  <strong><a href="{% url pybb:delete_watch_area_subscription sub.id %}">{% trans "unsubscribe" %}</a></strong>
-                {% else %}
-                  <strong><a href="{% url pybb:add_watch_area_subscription sub.id %}">{% trans "subscribe" %}</a></strong>
-                {% endif %}
+                <strong><a href="{% url pybb:edit_watch_area topic.id %}">{% trans "Edit" %}</a></strong>
               </p>
             </li>
         {% endfor %}
