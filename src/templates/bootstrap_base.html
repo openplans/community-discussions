@@ -86,13 +86,6 @@
             {% endfor %}
         </ul>
     {% endif %}
-    {% if request.path != '/' %}
-        <div id="breadcrumb" class="hidden-phone">
-            {% block breadcrumb %}
-                <a href="/">Main</a>
-            {% endblock breadcrumb %}
-        </div>
-    {% endif %}
     <div id="content">
         {% block content %}
         {% endblock content %}
