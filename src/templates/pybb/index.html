@@ -38,7 +38,7 @@
 
     <div class="row">
 
-      <div class="introduction span4 clearfix">
+      <div class="introduction span5 clearfix">
         <p class="lead">{% trans "Planning discussions are happening in places that you care about. Stay informed and give your input." %}</p>
         <p class="lead">{% trans "Create watch areas for every neighborhood you care about. You'll be notified of what people are saying and how plans are shaping up." %}</p>
         {% if user.is_authenticated %}
@@ -49,7 +49,7 @@
         {% endif %}
       </div>
 
-      <div class="popular-topics span8">
+      <div class="popular-topics span7">
         <div class="well well-small">
           <h3 class="muted">{% trans "Popular Discussion Topics" %}
           {% if public_watch_areas|length > 0 %}
