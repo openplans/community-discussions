@@ -113,40 +113,73 @@
 
 {% block aftercontent %}
 
-{% include "pybb/_homepage_map.html" %}
+  <div class="watch-area-container">
 
-<div class="features container">
-  <div class="row">
+    {% include "pybb/_homepage_map.html" %}
 
-    <div class="span4">
-      <div class="well well-small">
-        <h4 class="feature watch-area">{% trans "Create Watch Areas" %}</h4>
-        <p>{% trans "Each watch area you create keeps track of what's happening in that area." %}</p>
-        <a href="{% url 'pybb:add_watch_area' %}" class="btn btn-block btn-large">{% trans "Create a Watch Area" %}</a>
-      </div>
-    </div>
-
-    <div class="span4">
-      <div class="well well-small">
-        <h4 class="feature notifications">{% trans "Get Notifications" %}</h4>
-        <p>{% trans "We send you notifications of activity in your watch areas so you can keep tabs on what's happening." %}</p>
-        {% if user.is_authenticated %}
-          <a href="{% url 'pybb:edit_profile' %}" class="btn btn-block btn-large">{% trans "View Profile" %}</a>
-        {% else %}
-          <a href="{% url 'registration_register' %}" class="btn btn-block btn-large">{% trans "Register Now" %}</a>
-        {% endif %}
-      </div>
-    </div>
-
-    <div class="span4">
-      <div class="well well-small">
-        <h4 class="feature voice">{% trans "Add Your Voice" %}</h4>
-        <p>{% trans "Your opinion matters. Let your voice be heard. Take part in meaningful conversation." %}</p>
-        <a href="{% url 'global_forum' %}" class="btn btn-block btn-large">{% trans "See All Topics" %}</a>
-      </div>
+    <div class="watch-area-list-container">
+      <ul class="activity-list unstyled">
+        <li class="clearfix">
+          <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
+        </li>
+        <li class="clearfix">
+          <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
+        </li>
+        <li class="clearfix">
+          <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
+        </li>
+        <li class="clearfix">
+          <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
+        </li>
+        <li class="clearfix">
+          <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
+        </li>
+        <li class="clearfix">
+          <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
+        </li>
+        <li class="clearfix">
+          <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
+        </li>
+        <li class="clearfix">
+          <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
+        </li>
+      </ul>
     </div>
 
   </div>
-</div>
+
+  <div class="features container">
+    <div class="row">
+
+      <div class="span4">
+        <div class="well well-small">
+          <h4 class="feature watch-area">{% trans "Create Watch Areas" %}</h4>
+          <p>{% trans "Each watch area you create keeps track of what's happening in that area." %}</p>
+          <a href="{% url 'pybb:add_watch_area' %}" class="btn btn-block btn-large">{% trans "Create a Watch Area" %}</a>
+        </div>
+      </div>
+
+      <div class="span4">
+        <div class="well well-small">
+          <h4 class="feature notifications">{% trans "Get Notifications" %}</h4>
+          <p>{% trans "We send you notifications of activity in your watch areas so you can keep tabs on what's happening." %}</p>
+          {% if user.is_authenticated %}
+            <a href="{% url 'pybb:edit_profile' %}" class="btn btn-block btn-large">{% trans "View Profile" %}</a>
+          {% else %}
+            <a href="{% url 'registration_register' %}" class="btn btn-block btn-large">{% trans "Register Now" %}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="span4">
+        <div class="well well-small">
+          <h4 class="feature voice">{% trans "Add Your Voice" %}</h4>
+          <p>{% trans "Your opinion matters. Let your voice be heard. Take part in meaningful conversation." %}</p>
+          <a href="{% url 'global_forum' %}" class="btn btn-block btn-large">{% trans "See All Topics" %}</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 {% endblock aftercontent %}
