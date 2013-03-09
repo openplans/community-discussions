@@ -52,11 +52,11 @@
       <div class="popular-topics span7">
         <div class="well well-small">
           <h3 class="muted">{% trans "Popular Discussion Topics" %}
-          {% if public_watch_areas|length > 0 %}
+          {% if watch_areas|length > 0 %}
           <form class="homepage-watch-area-form" method="GET">
             <select name="watch_area">
               <option value="">{% trans "Everywhere" %}</option>
-              {% for watch_area in public_watch_areas %}
+              {% for watch_area in watch_areas %}
               <option value="{{ watch_area.pk }}"{% if watch_area == selected_watch_area %} selected="selected"{% endif %}>{% trans "in" %} {{ watch_area.name }}</option>
               {% endfor %}
             </select>
@@ -119,9 +119,18 @@
 
     <div class="watch-area-list-container">
       <ul class="watch-area-list activity-list unstyled">
+        {% for watch_area in watch_areas %}
+        <li class="clearfix watch-area watch-area-{{ watch_area.pk }}">
+          <h4><a href="#">{{ watch_area.name }} <small class="text-info"></small></a></h4>
+        </li>
         <li class="clearfix">
           <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
         </li>
+        <li class="clearfix">
+          <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
+        </li>
+        {% endfor %}
+
         <li class="is-active clearfix">
           <h4><a href="#">Watch Area Name <small class="text-info"></small></a></h4>
         </li>

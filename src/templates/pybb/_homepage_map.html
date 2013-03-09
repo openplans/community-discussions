@@ -14,13 +14,21 @@
 <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 <script src="{{ STATIC_URL }}js/homepage-map.js"></script>
 <script>
-  var center, topics = [];
+  var center, topics = [], watchAreas = [];
 
   {% for topic in featured_topics %}
     topics.push({
       place: { x: {{topic.place.x}}, y: {{topic.place.y}} },
       name: '{{ topic.name }}',
       url: '{% url "pybb:topic" topic.pk %}'
+    });
+  {% endfor %}
+
+  {% for watch_area in watch_areas %}
+    watchAreas.push({
+      fence: {{ watch_area.fence.json|safe }},
+      name: '{{ watch_area.name }}',
+      selector: '.watch-area-{{ watch_area.pk }}'
     });
   {% endfor %}
 
@@ -37,7 +45,7 @@
       shadowSize: L.point(41, 41)
     }),
     center: center || [40.7199, -73.9996],
-    topics: topics
+    topics: topics,
+    watchAreas: watchAreas
   });
 </script>
-
