@@ -8,3 +8,5 @@ DATABASES = {
         'PORT': 5432
     }
 }
+
+GOOGLE_ANALYTICS_KEY = 'my_ga_key'
