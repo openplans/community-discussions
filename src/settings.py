@@ -29,7 +29,7 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-LOGIN_REDIRECT_URL = '/profile/edit/'
+LOGIN_REDIRECT_URL = '/'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

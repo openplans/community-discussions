@@ -11,6 +11,7 @@ from django.views.generic.simple import direct_to_template
 
 from registration.views import activate
 from registration.views import register
+from django.contrib.auth.views import logout
 
 
 urlpatterns = patterns('',
@@ -30,5 +31,10 @@ urlpatterns = patterns('',
 #                           direct_to_template,
 #                           {'template': 'registration/registration_closed.html'},
 #                           name='registration_disallowed'),
+                       url(r'^logout/$',
+                           logout,
+                           {'next_page': '/',
+                            'template_name': 'registration/logout.html'},
+                           name='auth_logout'),
                        (r'', include('registration.backends.default.urls')),
                        )
