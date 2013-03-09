@@ -28,9 +28,13 @@
     watchAreas.push({
       fence: {{ watch_area.fence.json|safe }},
       name: '{{ watch_area.name }}',
+      area: {{ watch_area.fence.area }},
       selector: '.watch-area-{{ watch_area.pk }}'
     });
   {% endfor %}
+
+  // Sort the shapes from biggest to smallest.
+  watchAreas.sort(function(w1, w2) { return w2.area - w1.area; });
 
   CommunityDiscussions.initHomepageMap({
     el: 'homepage-map',
