@@ -1,4 +1,5 @@
 {% extends 'pybb/base.html' %}
+{% load url from future %}
 {% load pybb_tags i18n %}
 
 {% block title %}{{ topic }}{% endblock %}
@@ -73,31 +74,31 @@
                     {% if user.is_moderator %}
 
                         {% if topic.sticky %}
-                        <li><a class="btn" href="{% url pybb:unstick_topic topic.id %}">{% trans "Unstick topic" %}</a></li>
+                        <li><a class="btn" href="{% url 'pybb:unstick_topic' topic.id %}">{% trans "Unstick topic" %}</a></li>
                         {% else %}
-                        <li><a class="btn" href="{% url pybb:stick_topic topic.id %}">{% trans "Stick topic" %}</a></li>
+                        <li><a class="btn" href="{% url 'pybb:stick_topic' topic.id %}">{% trans "Stick topic" %}</a></li>
                         {% endif %}
 
                         {% if topic.closed %}
-                        <li><a class="btn" href="{% url pybb:open_topic topic.id %}">{% trans "Open topic" %}</a></li>
+                        <li><a class="btn" href="{% url 'pybb:open_topic' topic.id %}">{% trans "Open topic" %}</a></li>
                         {% else %}
-                        <li><a class="btn" href="{% url pybb:close_topic topic.id %}">{% trans "Close topic" %}</a></li>
+                        <li><a class="btn" href="{% url 'pybb:close_topic' topic.id %}">{% trans "Close topic" %}</a></li>
                         {% endif %}
 
                         {% if perms.pybb.change_topic and user.is_staff %}
-                        <li><a class="btn" href="{% url admin:pybb_topic_change topic.id %}">{% trans 'Admin' %}</a></li>
+                        <li><a class="btn" href="{% url 'admin:pybb_topic_change' topic.id %}">{% trans 'Admin' %}</a></li>
                         {% endif %}
 
                         {% comment %}
-                        <li><a class="btn" href="{% url pybb:merge_topics %}?topic={{ topic.id }}">{% trans 'Merge topics' %}</a></li>
+                        <li><a class="btn" href="{% url 'pybb:merge_topics' %}?topic={{ topic.id }}">{% trans 'Merge topics' %}</a></li>
                         {% endcomment %}
 
                     {% endif %}
 
                     {% if user.is_subscribed %}
-                        <li><a class="btn btn-primary" href="{% url pybb:delete_subscription topic.id %}?from_topic">{% trans "Unsubscribe" %}</a></li>
+                        <li><a class="btn btn-primary" href="{% url 'pybb:delete_subscription' topic.id %}?from_topic">{% trans "Unsubscribe" %}</a></li>
                     {% else %}
-                        <li><a class="btn btn-primary" href="{% url pybb:add_subscription topic.id %}">{% trans "Subscribe" %}</a></li>
+                        <li><a class="btn btn-primary" href="{% url 'pybb:add_subscription' topic.id %}">{% trans "Subscribe" %}</a></li>
                     {% endif %}
 
                     </ul>
@@ -120,8 +121,18 @@
             <div class="subscriber-list span4 pull-right">
                 {% trans "Subscribers" %}:
                 {% for subscriber in topic.subscribers.all %}
-                <a href="{% url pybb:user subscriber.username %}">{{ subscriber.username }}</a>{% if not forloop.last %}, {% endif%}
+                <a href="{% url 'pybb:user' subscriber.username %}">{{ subscriber.username }}</a>{% if not forloop.last %}, {% endif%}
                 {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if watch_areas %}
+            <div class="watch-area-list span4 pull-right">
+              {% trans "Watch Areas" %}:
+              {% for watch_area in watch_areas %}
+              <a class="watch-area {% if watch_area.public %}public{% else %}private{% endif %}-watch-area"
+                href="{% url 'pybb:watch_area_topics' pk=watch_area.pk %}">{{ watch_area.name }}</a>{% if not forloop.last %}, {% endif%}
+              {% endfor %}
             </div>
             {% endif %}
 
