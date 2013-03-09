@@ -8060,6 +8060,9 @@ label.checkbox {
   padding: 3px 0 3px 10px;
   font-size: 12px;
 }
+.topic .watch-area-list {
+  clear: right;
+}
 /* --------------------------------------------------
  * Posts
  -------------------------------------------------- */
