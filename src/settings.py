@@ -91,6 +91,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'pybb.context_processors.processor',
     'context_processors.settings',
+    'context_processors.global_link_helpers',
 )
 
 AUTH_PROFILE_MODULE = 'pybb.Profile'
