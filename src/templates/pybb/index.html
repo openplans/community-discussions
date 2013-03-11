@@ -97,11 +97,19 @@
             {{ watch_area.name }}
             <small class="text-info">
               <span class="summary-data watcher-count">
+              {% if watch_area.public %}
+
               {% blocktrans count number=watch_area.watcher_count %}
               {{ number }} watcher
               {% plural %}
               {{ number }} watchers
               {% endblocktrans %}
+
+              {% else %}
+
+              {% trans "(private)" %}
+
+              {% endif %}
               </span>
 
               <span class="summary-data topic-count">
@@ -113,8 +121,8 @@
               </span>
 
               <span class="summary-data last-update">
-              {% if watch_area.last_update %}
-              Last updated <time timestamp="{{ watch_area.last_update.isoformat }}">{{ watch_area.last_update.isoformat }}</time>
+              {% if watch_area.latest_update %}
+              Last updated <time timestamp="{{ watch_area.latest_update.isoformat }}">{{ watch_area.latest_update.isoformat }}</time>
               {% else %}
               No updates
               {% endif %}
