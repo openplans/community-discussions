@@ -59,9 +59,27 @@
 
             <div class="nav-collapse collapse">
                 <ul class="nav pull-right">
+                    {% if available_watch_areas|length > 0 %}
+                    <li class="dropdown">
+                      <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Watch Areas <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu">
+
+                        {% for watch_area in available_watch_areas %}
+                          {% ifchanged watch_area.public %}
+                            {% if not forloop.first %}
+                            <li class="divider"></li>
+                            {% endif %}
+                          {% endifchanged %}
+                          <li><a role="menuitem" href="{% url pybb:watch_area_topics watch_area.pk %}">{{ watch_area.name }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </li>
+                    {% endif %}
+
                     {% if request.user.is_authenticated %}
-                    <li><a href="{% url pybb:edit_profile %}"><strong>{{ request.user.username }}</strong> <small>(profile)</small></a></li>
-                    <li><a href="{% url auth_logout %}"><small>Log Out</small></a></li>
+                    <li><a href="{% url pybb:add_topic default_forum_id %}">Start a Discussion</a></li>
+                    <li><a href="{% url pybb:edit_profile %}">Account ({{ request.user.username }})</a></li>
+                    <li><a href="{% url auth_logout %}">Log Out</a></li>
                     {% if request.user.is_superuser %}
                     <li class="divider-vertical"></li>
                     <li><a href="{% url admin:index %}">Admin interface</a></li>
@@ -109,6 +127,7 @@
     </div>
 </footer>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
