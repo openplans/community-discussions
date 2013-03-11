@@ -8458,7 +8458,7 @@ label.checkbox {
  * Home Page
  -------------------------------------------------- */
 .introduction {
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
 .watch-area-container {
   position: relative;
@@ -8467,10 +8467,11 @@ label.checkbox {
 @media (min-width: 768px) {
   .homepage-container {
     position: relative;
+    margin-top: 40px;
     margin-bottom: 20px;
   }
   .introduction {
-    padding-top: 17px;
+    padding-bottom: 80px;
   }
   .popular-topics {
     position: absolute;

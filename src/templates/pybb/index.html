@@ -32,24 +32,25 @@
     <a class="sharing twitter" href="https://twitter.com/intent/tweet?source=webclient&text={% trans "Planning discussions are happening in places that you care about. Stay informed and give your input." %}&url=http://{{site}}" target="_blank">{% trans "Share on Twitter" %}</a>
   </div>
 
-  <h2>{% trans "What are people saying in your neighborhood?" %}</h2>
+  <h2>{% trans "What are people saying in your community?" %}</h2>
 
   <div class="container homepage-container">
 
     <div class="row">
 
-      <div class="introduction span5 clearfix">
-        <p class="lead">{% trans "Planning discussions are happening in places that you care about. Stay informed and give your input." %}</p>
-        <p class="lead">{% trans "Create watch areas for every neighborhood you care about. You'll be notified of what people are saying and how plans are shaping up." %}</p>
+      <div class="introduction span4 clearfix">
+        <p class="lead">{% trans "Planning discussions are happening in the communities you care about. " %}</p>
+        <p class="lead">{% trans "Your opinion matters. So stay informed and give your input. Let your voice be heard! " %}</p>
+        <p class="lead">{% trans "Draw your community on the map. You'll be notified of what people are saying and how plans are shaping up. " %}</p>
         {% if user.is_authenticated %}
-        <a href="{% url 'pybb:edit_profile' %}#profile__watch-areas" class="btn btn-primary btn-large watch-area-btn">{% trans "See Your Watch Areas" %}</a>
+        <a href="{% url 'pybb:edit_profile' %}#profile__watch-areas" class="btn btn-primary btn-large watch-area-btn">{% trans "See Your Communities" %}</a>
         {% else %}
-        <a href="{% url 'pybb:add_watch_area' %}" class="btn btn-primary btn-large watch-area-btn">{% trans "Create Your Watch Area" %}</a>
+        <a href="{% url 'pybb:add_watch_area' %}" class="btn btn-primary btn-large watch-area-btn">{% trans "Draw Your Community" %}</a>
         <p class="muted"><small>{% trans "Already have an account?" %} <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>.</small></p>
         {% endif %}
       </div>
 
-      <div class="popular-topics span7">
+      <div class="popular-topics span8 ">
         <div class="well well-small">
           <h3 class="muted">{% trans "Popular Discussions" %}
           <a href="{% url 'global_forum' %}" class="btn btn-small btn-info">{% trans "See All Topics" %}</a></h3>
@@ -143,29 +144,22 @@
 
       <div class="span4">
         <div class="well well-small">
-          <h4 class="feature watch-area">{% trans "Create Watch Areas" %}</h4>
-          <p>{% trans "Each watch area you create keeps track of what's happening in that area." %}</p>
-          <a href="{% url 'pybb:add_watch_area' %}" class="btn btn-block btn-large">{% trans "Create a Watch Area" %}</a>
+          <h4 class="feature watch-area">{% trans "Communities" %}</h4>
+          <p>{% trans "Draw your communities on the map to follow discussions happening there. Keep track of what people are saying about your neighborhood, near your office, school, and every community you care about." %}</p>
         </div>
       </div>
 
       <div class="span4">
         <div class="well well-small">
-          <h4 class="feature notifications">{% trans "Get Notifications" %}</h4>
-          <p>{% trans "We send you notifications of activity in your watch areas so you can keep tabs on what's happening." %}</p>
-          {% if user.is_authenticated %}
-            <a href="{% url 'pybb:edit_profile' %}" class="btn btn-block btn-large">{% trans "View Profile" %}</a>
-          {% else %}
-            <a href="{% url 'registration_register' %}" class="btn btn-block btn-large">{% trans "Register Now" %}</a>
-          {% endif %}
+          <h4 class="feature notifications">{% trans "Notifications" %}</h4>
+          <p>{% trans "Receive alerts of activity in your communities. You'll know when new discussions begin, and you can be a part of the conversation and stay engaged. " %}</p>
         </div>
       </div>
 
       <div class="span4">
         <div class="well well-small">
-          <h4 class="feature voice">{% trans "Add Your Voice" %}</h4>
-          <p>{% trans "Your opinion matters. Let your voice be heard. Take part in meaningful conversation." %}</p>
-          <a href="{% url 'global_forum' %}" class="btn btn-block btn-large">{% trans "See All Topics" %}</a>
+          <h4 class="feature voice">{% trans "Questions" %}</h4>
+          <p>{% trans "Have an idea? Need to gather community feedback? Add a question when you start a discussion and participants can choose from a set of multiple choice answers. " %}</p>
         </div>
       </div>
 
