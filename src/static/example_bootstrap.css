@@ -8519,6 +8519,17 @@ label.checkbox {
     overflow-x: visible;
     overflow-y: auto;
   }
+  .watch-area-container li.first {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    margin: 0 0 0;
+    padding: 0;
+  }
   .watch-area-container .watch-area-list .is-active {
     margin-left: -20px;
     border-right: 20px solid #fff;

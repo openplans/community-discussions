@@ -91,6 +91,10 @@
 
     <div class="watch-area-list-container">
       <ul class="watch-area-list activity-list unstyled">
+        <li class="clearfix first">
+          <h3 class="muted">{% trans "Watch Areas" %}</h3>
+        </li>
+
         {% for watch_area in watch_areas %}
         <li class="clearfix watch-area watch-area-{{ watch_area.pk }}">
           <h4>
