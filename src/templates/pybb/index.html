@@ -87,18 +87,16 @@
 
   <div class="watch-area-container">
 
+    <h4 class="watch-area-header muted">{% trans "Watch Areas" %}</h4>
+
     {% include "pybb/_homepage_map.html" %}
 
     <div class="watch-area-list-container">
       <ul class="watch-area-list activity-list unstyled">
-        <li class="clearfix first">
-          <h3 class="muted">{% trans "Watch Areas" %}</h3>
-        </li>
-
         {% for watch_area in watch_areas %}
         <li class="clearfix watch-area watch-area-{{ watch_area.pk }}">
           <h4>
-            {{ watch_area.name }}
+            <a class="topic-list-link" href="{% url 'pybb:watch_area_topics' watch_area.pk %}">{{ watch_area.name }}</a>
             <small class="text-info">
               <span class="summary-data watcher-count">
               {% if watch_area.public %}
@@ -133,8 +131,6 @@
               </span>
             </small>
           </h4>
-
-          <a class="topic-list-link" href="{% url 'pybb:watch_area_topics' watch_area.pk %}">See topics...</a>
         </li>
         {% endfor %}
       </ul>

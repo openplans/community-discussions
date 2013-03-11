@@ -510,6 +510,21 @@ label.checkbox {
       float: left;
       width: 70%;
     }
+    .watch-area-header {
+      position: absolute;
+      top: 1px;
+      right: 0;
+      width: 30%;
+      z-index: 1200;
+      background: @grayLighter;
+      margin: 0;
+      padding: 0 10px;
+      line-height: 40px;
+      .box-shadow( 0 2px 2px rgba(0,0,0,0.25) );
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+    }
     .watch-area-list-container {
       position: absolute;
       top: 0;
@@ -522,21 +537,18 @@ label.checkbox {
       border-left: 0;
     }
     .watch-area-list {
+      margin-top: 40px;
       padding: 10px 10px 10px 25px;
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-      overflow-x: visible;
-      overflow-y: auto;
-    }
-    li.first {
-      background: none;
-      .box-shadow( none );
-      .border-radius( 0 );
-      margin: 0 0 0;
-      padding: 0;
+      overflow: scroll;
+      z-index: 1100;
+      li {
+        cursor: pointer; 
+      }
     }
     .watch-area-list .is-active {
       margin-left: -20px;
@@ -569,6 +581,7 @@ label.checkbox {
 .summary-data {
   .muted;
   margin: auto 3px;
+  display: inline-block;
 }
 
 .activity-list {
