@@ -8484,7 +8484,8 @@ label.checkbox {
     right: 0;
     bottom: 0;
     left: 0;
-    overflow: scroll;
+    overflow-x: visible;
+    overflow-y: auto;
   }
   .watch-area-container {
     float: left;
