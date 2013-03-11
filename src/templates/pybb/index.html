@@ -51,37 +51,10 @@
 
       <div class="popular-topics span7">
         <div class="well well-small">
-          <h3 class="muted">{% trans "Popular Discussion Topics" %}
-          {% if watch_areas|length > 0 %}
-          <form class="homepage-watch-area-form" method="GET">
-            <select name="watch_area">
-              <option value="">{% trans "Everywhere" %}</option>
-              {% for watch_area in watch_areas %}
-              <option value="{{ watch_area.pk }}"{% if watch_area == selected_watch_area %} selected="selected"{% endif %}>{% trans "in" %} {{ watch_area.name }}</option>
-              {% endfor %}
-            </select>
-          </form>
-          {% endif %}
+          <h3 class="muted">{% trans "Popular Discussions" %}
           <a href="{% url 'global_forum' %}" class="btn btn-small btn-info">{% trans "See All Topics" %}</a></h3>
 
-          <script>
-            $(function() {
-              var $watchAreaSelector = $('[name="watch_area"]'),
-                  $watchAreaForm = $('.homepage-watch-area-form'),
-                  $time = $('time');
-              $watchAreaSelector.change(function() {
-                $watchAreaForm.submit();
-              });
-
-              // Prettify the time tags
-              if (moment) {
-                $time.html( moment($time.attr('datetime')).fromNow() );
-              }
-            });
-          </script>
-
           <ul class="activity-list unstyled">
-
           {% for topic in featured_topics %}
             {% with topic.last_post as post %}
             <li class="clearfix">
@@ -91,7 +64,6 @@
             </li>
             {% endwith %}
           {% endfor %}
-
           </ul>
 
           {% if selected_watch_area %}
