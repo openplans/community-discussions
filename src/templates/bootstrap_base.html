@@ -1,4 +1,6 @@
 {% load pytils_numeral %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,16 +79,16 @@
                     {% endif %}
 
                     {% if request.user.is_authenticated %}
-                    <li><a href="{% url pybb:add_topic default_forum_id %}">Start a Discussion</a></li>
-                    <li><a href="{% url pybb:edit_profile %}">Account ({{ request.user.username }})</a></li>
-                    <li><a href="{% url auth_logout %}">Log Out</a></li>
+                    <li><a href="{% url pybb:add_topic default_forum_id %}">{% trans "Start a Discussion" %}</a></li>
+                    <li><a href="{% url pybb:edit_profile %}">{% trans "Account" %} ({{ request.user.username }})</a></li>
+                    <li><a href="{% url auth_logout %}">{% trans "Log Out" %}</a></li>
                     {% if request.user.is_superuser %}
                     <li class="divider-vertical"></li>
-                    <li><a href="{% url admin:index %}">Admin interface</a></li>
+                    <li><a href="{% url admin:index %}">{% trans "Admin" %}</a></li>
                     {% endif %}
                     {% else %}
-                    <li><a href="{% url auth_login %}">Login</a></li>
-                    <li><a href="{% url registration_register %}">Register</a></li>
+                    <li><a href="{% url auth_login %}">{% trans "Login" %}</a></li>
+                    <li><a href="{% url registration_register %}">{% trans "Register" %}</a></li>
                     {% endif %}
                 </ul>
             </div>
