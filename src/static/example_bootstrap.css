@@ -8541,6 +8541,10 @@ label.checkbox {
   text-align: right;
   margin-top: 0.5em;
 }
+.summary-data {
+  color: #999999;
+  margin: auto 3px;
+}
 .activity-list {
   margin: 0;
 }

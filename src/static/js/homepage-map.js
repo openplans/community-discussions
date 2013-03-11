@@ -65,11 +65,12 @@ var CommunityDiscussions = CommunityDiscussions || {};
           activateWatchAreaLayer(this);
         });
 
-        $(watchArea.selector).data('shape', shape);
-        $(watchArea.selector).click(function(e) {
-          e.preventDefault();
-          activateWatchAreaLayer($(this).data('shape'));
-        });
+        (function(shape) {
+          $(watchArea.selector).click(function(e) {
+            // Do not prevent default, so that links within the element still work.
+            activateWatchAreaLayer(shape);
+          });
+        })(shape);
 
         // Add the shape to the watch area group
         watchAreaGroup.addLayer(shape);

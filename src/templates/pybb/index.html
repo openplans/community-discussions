@@ -93,7 +93,36 @@
       <ul class="watch-area-list activity-list unstyled">
         {% for watch_area in watch_areas %}
         <li class="clearfix watch-area watch-area-{{ watch_area.pk }}">
-          <h4><a href="#">{{ watch_area.name }} <small class="text-info"></small></a></h4>
+          <h4>
+            {{ watch_area.name }}
+            <small class="text-info">
+              <span class="summary-data watcher-count">
+              {% blocktrans count number=watch_area.watcher_count %}
+              {{ number }} watcher
+              {% plural %}
+              {{ number }} watchers
+              {% endblocktrans %}
+              </span>
+
+              <span class="summary-data topic-count">
+              {% blocktrans count number=watch_area.topic_count %}
+              {{ number }} topic
+              {% plural %}
+              {{ number }} topics
+              {% endblocktrans %}
+              </span>
+
+              <span class="summary-data last-update">
+              {% if watch_area.last_update %}
+              Last updated <time timestamp="{{ watch_area.last_update.isoformat }}">{{ watch_area.last_update.isoformat }}</time>
+              {% else %}
+              No updates
+              {% endif %}
+              </span>
+            </small>
+          </h4>
+
+          <a class="topic-list-link" href="{% url 'pybb:watch_area_topics' watch_area.pk %}">See topics...</a>
         </li>
         {% endfor %}
       </ul>
