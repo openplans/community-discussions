@@ -81,6 +81,20 @@
   </div>
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+  <script>
+  $(function() {
+    $('time').each(function(i, time) {
+      var $time = $(time),
+          datetime = $time.attr('datetime'),
+          prettyTime;
+
+      if (datetime) {
+        prettyTime = moment(datetime, 'YYYY-MM-DDTHH:mm:ss.SSS').fromNow();
+        $time.html(prettyTime);
+      }
+    });
+  });
+  </script>
 
 {% endblock content %}
 
@@ -125,7 +139,7 @@
 
               <span class="summary-data last-update">
               {% if watch_area.latest_update %}
-              Last updated <time timestamp="{{ watch_area.latest_update.isoformat }}">{{ watch_area.latest_update.isoformat }}</time>
+              Last updated <time datetime="{{ watch_area.latest_update.isoformat }}">{{ watch_area.latest_update.isoformat }}</time>
               {% else %}
               No updates
               {% endif %}

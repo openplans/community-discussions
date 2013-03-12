@@ -88,12 +88,6 @@ var CommunityDiscussions = CommunityDiscussions || {};
         featureGroup.addLayer(marker);
       }
 
-      $('.watch-area-list time').each(function(i, time) {
-        var timestamp = time.getAttribute('timestamp'),
-            prettyTime = moment(timestamp, 'YYYY-MM-DDTHH:mm:ss.SSS').fromNow();
-        time.textContent = prettyTime;
-      });
-
       if (len) {
         // Fit the map to all the features
         map.fitBounds(featureGroup.getBounds().extend(watchAreaGroup.getBounds()));
