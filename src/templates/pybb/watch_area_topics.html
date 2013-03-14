@@ -54,13 +54,13 @@
               Want to know when new discussions are started in this community?
               <a data-add-subscription-href="{% url pybb:add_watch_area_subscription watch_area.id %}"
                   data-delete-subscription-href="{% url pybb:delete_watch_area_subscription watch_area.id %}"
-                  data-add-subscription-label="{% trans 'Get emails for new topics' %}"
-                  data-delete-subscription-label="{% trans 'Stop watching' %}"
+                  data-add-subscription-label="{% trans 'Get Notifications' %}"
+                  data-delete-subscription-label="{% trans 'Stop Notifications' %}"
               {% if user in watch_area.watchers.all %}
                   class="subscription-toggle delete-subscription btn btn-primary btn-small" href="{% url pybb:delete_watch_area_subscription watch_area.id %}">
                   {% trans 'Stop Notifications' %}
               {% else %}
-                  class="subscription-toggle add-subscription btn btn-primary btn-small" href="{% url pybb:add_watch_area_subscription watch_area.id %}">
+                  class="add-subscription btn btn-primary btn-small" href="{% url pybb:add_watch_area_subscription watch_area.id %}">
                   {% trans 'Get Notifications' %}
               {% endif %} <i class="subscription-icon"></i>
               </a>
@@ -71,7 +71,7 @@
               <div id="watch-area-map"></div>
               {% if watch_area.user == user or user.is_superuser %}
               <div class="watch-area-edit">
-                
+
                 <a href="{% url pybb:edit_watch_area watch_area.id %}" class="btn btn-mini">Edit</a>
                 <a href="{% url pybb:delete_watch_area watch_area.id %}?prev={{ request.get_full_path }}" class="btn btn-mini btn-danger">Delete</a>
               </div>
