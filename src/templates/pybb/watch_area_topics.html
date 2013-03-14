@@ -1,7 +1,7 @@
 {% extends 'pybb/base.html' %}
 {% load pybb_tags i18n %}
 
-{% block title %}{% blocktrans %}Latest updates in &quot;{{ watch_area }}&quot;{% endblocktrans %}{% endblock title %}
+{% block title %}{% blocktrans %}Discussions in &quot;{{ watch_area }}&quot;{% endblocktrans %}{% endblock title %}
 
 {% block breadcrumb %}
     {% with object=watch_area %}
@@ -11,68 +11,89 @@
 
 {% block content %}
     <div class="watch-area forum">
-        <h1>{% blocktrans %}Latest updates in &quot;{{ watch_area }}&quot;{% endblocktrans %}</h1>
 
-        <link rel="stylesheet" href="{{ STATIC_URL }}css/watch-area-topics-map.css" />
-        <div id="watch-area-map-container">
-          <div id="watch-area-map"></div>
-        </div>
+      <h1>{% blocktrans %}Discussions in &quot;{{ watch_area }}&quot;{% endblocktrans %}</h1>
 
-        <div class="watch-area-subscribe">
-          {% if watch_area.user == user or user.is_superuser %}
-          <a href="{% url pybb:delete_watch_area watch_area.id %}?prev={{ request.get_full_path }}">Delete</a>
-          <a href="{% url pybb:edit_watch_area watch_area.id %}" class="btn">Edit</a>
-          {% endif %}
+      <div class="row">
 
-          <a data-add-subscription-href="{% url pybb:add_watch_area_subscription watch_area.id %}"
-              data-delete-subscription-href="{% url pybb:delete_watch_area_subscription watch_area.id %}"
-              data-add-subscription-label="{% trans 'Get emails for new topics' %}"
-              data-delete-subscription-label="{% trans 'Stop watching' %}"
-          {% if user in watch_area.watchers.all %}
-              class="subscription-toggle delete-subscription btn btn-primary" href="{% url pybb:delete_watch_area_subscription watch_area.id %}">
-              {% trans 'Stop watching' %}
-          {% else %}
-              class="subscription-toggle add-subscription btn btn-primary" href="{% url pybb:add_watch_area_subscription watch_area.id %}">
-              {% trans 'Get emails for new topics' %}
-          {% endif %} <i class="subscription-icon"></i>
-          </a>
-        </div>
+          <div class="span8">
 
-        {% include "pybb/_watch_area_map.html" with editable="false" fence=watch_area.fence|safe %}
-
-        {% if forum.headline %}
+            {% if forum.headline %}
             <div class="forum-headline alert alert-block">
                 {{ forum.headline|safe }}
             </div>
-        {% endif %}
+            {% endif %}
 
-        {% include "pybb/pagination.html" %}
+            {% include "pybb/pagination.html" %}
 
-        {% include "pybb/topic_list.html" %}
+            {% include "pybb/topic_list.html" %}
 
-        {% include "pybb/pagination.html" %}
+            {% include "pybb/pagination.html" %}
 
-        {% if PYBB_ENABLE_ANONYMOUS_POST or not user.get_profile.is_banned %}
-            <div class="controls">
-                {% include "pybb/_button_new_topic.html" with forum=watch_area.forum %}
+            <div class="row">
+              {% if user.is_authenticated %}
+              <div id="mark-all-as-read" class="span4">
+                  <a href='{% url pybb:mark_all_as_read %}'>
+                      {% trans "Mark all topics as read" %}
+                  </a>
+              </div>
+              {% endif %}
+
+              {% if PYBB_ENABLE_ANONYMOUS_POST or not user.get_profile.is_banned %}
+              <div class="controls span4 pull-right text-right">
+                <p>{% include "pybb/_button_new_topic.html" with forum=watch_area.forum %}</p>
+              </div>
+              {% endif %}
             </div>
-        {% endif %}
 
-        {% if user.is_authenticated %}
-            <div id='mark-all-as-read'>
-                <a href='{% url pybb:mark_all_as_read %}'>
-                    {% trans "Mark all topics as read" %}
-                </a>
+          </div><!-- end .span8 -->
+
+          <div class="span4">
+
+            <div class="watch-area-subscribe">
+              Want to know when new discussions are started in this community?
+              <a data-add-subscription-href="{% url pybb:add_watch_area_subscription watch_area.id %}"
+                  data-delete-subscription-href="{% url pybb:delete_watch_area_subscription watch_area.id %}"
+                  data-add-subscription-label="{% trans 'Get emails for new topics' %}"
+                  data-delete-subscription-label="{% trans 'Stop watching' %}"
+              {% if user in watch_area.watchers.all %}
+                  class="subscription-toggle delete-subscription btn btn-primary btn-small" href="{% url pybb:delete_watch_area_subscription watch_area.id %}">
+                  {% trans 'Stop Notifications' %}
+              {% else %}
+                  class="subscription-toggle add-subscription btn btn-primary btn-small" href="{% url pybb:add_watch_area_subscription watch_area.id %}">
+                  {% trans 'Get Notifications' %}
+              {% endif %} <i class="subscription-icon"></i>
+              </a>
             </div>
-        {% endif %}
 
-        {% if user.is_authenticated %}
+            <link rel="stylesheet" href="{{ STATIC_URL }}css/watch-area-topics-map.css" />
+            <div id="watch-area-map-container">
+              <div id="watch-area-map"></div>
+              {% if watch_area.user == user or user.is_superuser %}
+              <div class="watch-area-edit">
+                
+                <a href="{% url pybb:edit_watch_area watch_area.id %}" class="btn btn-mini">Edit</a>
+                <a href="{% url pybb:delete_watch_area watch_area.id %}?prev={{ request.get_full_path }}" class="btn btn-mini btn-danger">Delete</a>
+              </div>
+              {% endif %}
+            </div>
+
+
+            {% include "pybb/_watch_area_map.html" with editable="false" fence=watch_area.fence|safe %}
+
+
+            {% if user.is_authenticated %}
+            <hr />
             <div class="subscriber-list">
-                {% trans "Watchers" %}:
+                {% trans "Community Members" %}:
                 {% for watcher in watch_area.watchers.all %}
                     <a href="{% url pybb:user watcher.username %}">{{ watcher.username }}</a>{% if not forloop.last %}, {% endif%}
                 {% endfor %}
             </div>
-        {% endif %}
+            {% endif %}
+          </div><!-- end .span4-->
+
+        </div><!-- end .row -->
+
     </div>
 {% endblock content %}

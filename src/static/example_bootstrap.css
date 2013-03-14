@@ -7605,9 +7605,26 @@ a.badge:hover {
 h1 {
   font-size: 31.5px;
 }
+.header-unpadded {
+  padding: 0;
+  margin: 0;
+  line-height: 1.5em;
+}
+.header-unpadded .btn-small {
+  margin-top: 0.5em;
+}
 blockquote {
   color: #999999;
   font-size: 11.9px;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
 }
 .site-footer {
   font-size: 85%;
@@ -8266,18 +8283,6 @@ label.checkbox {
 .watch-area {
   position: relative;
 }
-.watch-area-subscribe,
-.watch-area-subscribe .btn {
-  width: 100%;
-}
-.watch-area-subscribe .add-subscription .subscription-icon,
-.watch-area-subscribe .btn .add-subscription .subscription-icon {
-  background-position: -96px -120px;
-}
-.watch-area-subscribe .delete-subscription .subscription-icon,
-.watch-area-subscribe .btn .delete-subscription .subscription-icon {
-  background-position: -120px -120px;
-}
 #watch-area-map-container {
   position: relative;
   width: 100%;
@@ -8443,16 +8448,14 @@ label.checkbox {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }
-@media (min-width: 980px) {
-  .watch-area-subscribe,
-  .watch-area-subscribe .btn {
-    width: auto;
-  }
-  .watch-area-subscribe {
-    position: absolute;
-    top: 6px;
-    right: 0;
-  }
+.watch-area-subscribe {
+  margin-bottom: 20px;
+}
+.watch-area-edit {
+  padding: 5px;
+  background: #eeeeee;
+  border-top: 1px solid #ccc;
+  text-align: right;
 }
 /* --------------------------------------------------
  * Home Page
@@ -8571,7 +8574,7 @@ label.checkbox {
   display: inline-block;
 }
 .activity-list {
-  margin: 0;
+  margin: 0 0 20px;
 }
 .activity-list h4 {
   margin: 0 0 5px;

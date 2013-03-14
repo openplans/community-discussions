@@ -128,7 +128,7 @@
 
             {% if watch_areas %}
             <div class="watch-area-list span4 pull-right">
-              {% trans "Watch Areas" %}:
+              {% trans "Communities" %}:
               {% for watch_area in watch_areas %}
               <a class="watch-area {% if watch_area.public %}public{% else %}private{% endif %}-watch-area"
                 href="{% url 'pybb:watch_area_topics' pk=watch_area.pk %}">{{ watch_area.name }}</a>{% if not forloop.last %}, {% endif%}

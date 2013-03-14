@@ -8,12 +8,12 @@
 
 {% block content %}
 
-    <h2>Register</h2>
-
+    <h2>Join the Discussion!</h2>
+    
     <form action='' method=POST class="form-stacked">
     {{ form|crispy }}
     {% csrf_token %}
-	<input type=submit>
+	  <input type=submit value="Create Account" class="btn btn-large btn-primary">
     </form>
 
 {% endblock %}
