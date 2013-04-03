@@ -12,7 +12,7 @@
             {% include 'pybb/breadcrumb.html' %}
         {% endwith %}
     {% else %}
-        {% with object=forum extra_crumb=_("New watch area") %}
+        {% with object=forum extra_crumb=_("New Community") %}
             {% include 'pybb/breadcrumb.html' %}
         {% endwith %}
     {% endif %}
@@ -23,7 +23,7 @@
 {% if object %}
     <h1>{% blocktrans %}Edit watch area &quot;{{ object }}&quot;{% endblocktrans %}</h1>
 {% else %}
-    <h1>{% trans "New watch area" %}</h1>
+    <h1>{% trans "New Community" %}</h1>
 {% endif %}
 
 {% include "pybb/watch_area_form.html" %}
