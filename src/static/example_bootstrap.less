@@ -107,6 +107,7 @@ blockquote {
 #logo {
   position: relative;
   padding-left: 3em;
+  margin-left: -20px;
 }
 @logoColor: desaturate(lighten(@linkColor, 40%), 40%);
 @logoShadow: @logoColor - #222;
@@ -140,6 +141,15 @@ blockquote {
   -webkit-box-shadow: 1px 0 0 @logoShadow;
      -moz-box-shadow: 1px 0 0 @logoShadow;
           box-shadow: 1px 0 0 @logoShadow;
+}
+#logo .beta {
+  .label;
+  display: inline-block;
+  position: relative;
+  top: -0.75em;
+  text-transform: uppercase; 
+  background-color: @linkColor;
+  font-weight: normal;
 }
 
 #emoticons {

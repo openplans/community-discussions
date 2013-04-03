@@ -7650,6 +7650,7 @@ blockquote {
 #logo {
   position: relative;
   padding-left: 3em;
+  margin-left: -20px;
 }
 #logo:before,
 #logo:after {
@@ -7681,6 +7682,59 @@ blockquote {
   -webkit-box-shadow: 1px 0 0 #a1aa8f;
   -moz-box-shadow: 1px 0 0 #a1aa8f;
   box-shadow: 1px 0 0 #a1aa8f;
+}
+#logo .beta {
+  padding: 2px 4px;
+  font-size: 11.844px;
+  font-weight: bold;
+  line-height: 14px;
+  color: #ffffff;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #999999;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  top: -0.75em;
+  text-transform: uppercase;
+  background-color: #6b8e23;
+  font-weight: normal;
+}
+#logo .beta:empty {
+  display: none;
+}
+#logo .beta-important {
+  background-color: #b94a48;
+}
+#logo .beta-important[href] {
+  background-color: #953b39;
+}
+#logo .beta-warning {
+  background-color: #f89406;
+}
+#logo .beta-warning[href] {
+  background-color: #c67605;
+}
+#logo .beta-success {
+  background-color: #468847;
+}
+#logo .beta-success[href] {
+  background-color: #356635;
+}
+#logo .beta-info {
+  background-color: #3a87ad;
+}
+#logo .beta-info[href] {
+  background-color: #2d6987;
+}
+#logo .beta-inverse {
+  background-color: #333333;
+}
+#logo .beta-inverse[href] {
+  background-color: #1a1a1a;
 }
 #emoticons {
   display: none;
