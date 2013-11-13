@@ -12,7 +12,7 @@ pytils>=0.2.3
 psycopg2
 
 # Theme, templates and authentication
-django-registration
+django-registration<1.0
 django-crispy-forms
 pinax-theme-bootstrap==2.0.4
 django-forms-bootstrap>=2.0.3
